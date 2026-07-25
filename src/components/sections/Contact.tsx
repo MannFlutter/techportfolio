@@ -56,6 +56,9 @@ export function Contact() {
       `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
     );
     window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+    setName("");
+    setEmail("");
+    setMessage("");
     setStatus("opened");
   };
 

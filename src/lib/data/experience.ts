@@ -55,26 +55,6 @@ export const experience: ExperienceEntry[] = [
   },
 ];
 
-export type EarlyFoundation = {
-  title: string;
-  year: string;
-  note: string;
-};
-
-/** From personal_info.dart academicProjects — condensed, supporting beat only. */
-export const earlyFoundations: EarlyFoundation[] = [
-  {
-    title: "Digital Solar-Based Speed Breaker Visibility System",
-    year: "2020–2021",
-    note: "Government-funded student innovation project (SOIC/SSIP): a solar-powered digital indicator improving speed-breaker visibility at night — real IoT hardware work years before Odigo.",
-  },
-  {
-    title: "Famito",
-    year: "2020–2021",
-    note: "Family-focused social networking Android app (Java, Firebase, Google Maps) with real-time location sharing and family-tree profiles.",
-  },
-];
-
 export const experienceTotals = {
   yearsLabel: "5+ years",
   shippedAppsLabel: "25+",

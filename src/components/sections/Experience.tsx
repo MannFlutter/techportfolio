@@ -6,7 +6,7 @@ import {
   reducedMotionVariants,
   staggerContainer,
 } from "@/lib/animations/motionVariants";
-import { earlyFoundations, experience } from "@/lib/data/experience";
+import { experience } from "@/lib/data/experience";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { Badge } from "@/components/ui/Badge";
 import { RevealText } from "@/components/ui/RevealText";
@@ -44,39 +44,12 @@ export function Experience() {
           </p>
         </div>
 
-        <motion.div
-          initial={animate ? "hidden" : false}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={container}
-          className="mt-14 rounded-lg border border-border/70 bg-surface/40 p-5 sm:p-6"
-        >
-          <p className="font-mono text-[10px] tracking-[0.14em] text-text-secondary uppercase">
-            Early foundations
-          </p>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-6">
-            {earlyFoundations.map((item) => (
-              <motion.li key={item.title} variants={variants}>
-                <p className="font-mono text-[11px] text-signal tabular-nums">
-                  {item.year}
-                </p>
-                <p className="mt-1.5 font-display text-sm font-medium tracking-tight text-text-primary">
-                  {item.title}
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
-                  {item.note}
-                </p>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-
         <motion.ol
           initial={animate ? "hidden" : false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={container}
-          className="mt-4 space-y-0"
+          className="mt-14 space-y-0"
         >
           {experience.map((role) => (
             <motion.li
