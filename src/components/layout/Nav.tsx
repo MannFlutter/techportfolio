@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,15 +22,41 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
   const pathname = usePathname();
   const { scrollTo } = useLenisScroll();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+
+      if (pathname !== "/") {
+        setActiveHash("");
+        return;
+      }
+
+      const marker = window.scrollY + 112;
+      let current = "";
+
+      for (const link of links) {
+        const section = document.querySelector<HTMLElement>(link.hash);
+        if (section && section.offsetTop <= marker) current = link.hash;
+      }
+
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 8
+      ) {
+        current = "#contact";
+      }
+
+      setActiveHash(current);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -46,6 +73,7 @@ export function Nav() {
   ) => {
     if (pathname !== "/") return;
     event.preventDefault();
+    setActiveHash(hash);
     scrollTo(hash);
     history.replaceState(null, "", hash);
     setOpen(false);
@@ -66,9 +94,17 @@ export function Nav() {
       >
         <Link
           href="/"
-          className="font-display text-sm font-medium tracking-tight text-text-primary transition-colors duration-200 ease-signature hover:text-signal"
+          className="inline-flex items-center gap-2.5 font-display text-sm font-medium tracking-tight text-text-primary transition-colors duration-200 ease-signature hover:text-signal"
           onClick={() => setOpen(false)}
         >
+          <Image
+            src={personal.profileImage}
+            alt=""
+            width={32}
+            height={32}
+            className="size-8 rounded-full border border-border object-cover"
+            aria-hidden
+          />
           Manthan Patel
         </Link>
 
@@ -78,7 +114,13 @@ export function Nav() {
               <Link
                 href={`/${link.hash}`}
                 onClick={(e) => onNavClick(e, link.hash)}
-                className="text-sm text-text-secondary transition-colors duration-200 ease-signature hover:text-text-primary"
+                aria-current={activeHash === link.hash ? "location" : undefined}
+                className={cn(
+                  "rounded-md px-2.5 py-1.5 text-sm transition-colors duration-200 ease-signature",
+                  activeHash === link.hash
+                    ? "bg-signal-muted text-signal"
+                    : "text-text-secondary hover:text-text-primary",
+                )}
               >
                 {link.label}
               </Link>
@@ -119,7 +161,13 @@ export function Nav() {
             <li key={link.hash}>
               <Link
                 href={`/${link.hash}`}
-                className="block rounded-md px-2 py-2.5 text-sm text-text-secondary transition-colors duration-200 ease-signature hover:bg-surface hover:text-text-primary"
+                aria-current={activeHash === link.hash ? "location" : undefined}
+                className={cn(
+                  "block rounded-md px-2 py-2.5 text-sm transition-colors duration-200 ease-signature",
+                  activeHash === link.hash
+                    ? "bg-signal-muted text-signal"
+                    : "text-text-secondary hover:bg-surface hover:text-text-primary",
+                )}
                 onClick={(e) => onNavClick(e, link.hash)}
               >
                 {link.label}

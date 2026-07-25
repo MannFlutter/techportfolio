@@ -3,6 +3,7 @@ import { AllProjectsGrid } from "@/components/sections/AllProjectsGrid";
 import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Expertise } from "@/components/sections/Expertise";
+import { FeaturedStudies } from "@/components/sections/FeaturedStudies";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Hero } from "@/components/sections/Hero";
 import { RoboticsShowcase } from "@/components/sections/RoboticsShowcase";
@@ -16,6 +17,7 @@ export default function Home() {
       <Experience />
       <SignalDivider />
       <RoboticsShowcase />
+      <FeaturedStudies />
       <FeaturedWork />
       <AllProjectsGrid />
       <Expertise />

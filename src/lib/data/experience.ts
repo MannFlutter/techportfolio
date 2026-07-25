@@ -38,10 +38,10 @@ export const experience: ExperienceEntry[] = [
     summary:
       "Flutter development across educational, communication, and real-time data-driven products — architecture through App Store deployment.",
     highlights: [
-      "First ~2 years: end-to-end app delivery, architecture to store release",
-      "~1.5 years on Spice — enterprise mobile platform, architecture ownership",
-      "~1 year on Dubai-based robotics clients — the Odigo platform",
-      "Led a team of 3: code review, sprint planning, cross-functional delivery",
+      "Designed, architected, and shipped high-performance Flutter applications serving enterprise, fintech, communication, education, and robotics domains.",
+      "Drove end-to-end engineering ownership, translating product requirements into scalable mobile architectures and reliable production releases.",
+      "Developed the mobile applications for the Odigo robotics platform, integrating ROS, real-time communication protocols, and hardware interfaces to support live commercial deployments.",
+      "Managed a team of three engineers, establishing engineering best practices through code reviews, sprint planning, mentoring, and collaborative delivery.",
     ],
     tech: [
       "Flutter",
@@ -78,6 +78,6 @@ export const earlyFoundations: EarlyFoundation[] = [
 export const experienceTotals = {
   yearsLabel: "5+ years",
   shippedAppsLabel: "25+",
-  robotDeploymentsLabel: "10+",
+  robotDeploymentsLabel: "100+",
   countriesLabel: "2",
 } as const;

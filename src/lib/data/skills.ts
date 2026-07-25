@@ -30,7 +30,6 @@ export const technicalSkills: SkillCategory[] = [
     title: "APIs & Data",
     skills: [
       "REST via Dio and HTTP",
-      "GraphQL",
       "Repository & model-based architecture",
       "Local caching, Postman-based testing",
     ],

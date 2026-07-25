@@ -27,7 +27,7 @@ export const odigoDeployments: DeploymentRegion[] = [
 
 export const odigoCapabilities = [
   "ROS and ROS 2 integration",
-  "MQTT, WebSockets, Serial/UART, BLE/GATT, WebRTC",
+  "WebSockets, Serial/UART, WebRTC",
   "Live telemetry and robot-operator interfaces",
   "Secure, low-latency communication for production deployment",
 ] as const;

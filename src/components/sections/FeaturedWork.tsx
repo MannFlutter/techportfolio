@@ -39,8 +39,8 @@ export function FeaturedWork() {
             Flagship case studies
           </RevealText>
           <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-text-secondary">
-            Deep dives into robotics, finance, and social-good platforms shipped
-            to production.
+            Deep dives into the Odigo robotics platform, Satsang, Bonno, and
+            other production systems shipped to store.
           </p>
         </div>
 

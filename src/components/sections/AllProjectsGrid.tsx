@@ -12,7 +12,6 @@ import { getGridProjects, hasProjectDetail } from "@/lib/data/projects";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { Badge } from "@/components/ui/Badge";
 import { RevealText } from "@/components/ui/RevealText";
-import { ScrollToHash } from "@/components/ui/ScrollToHash";
 
 export function AllProjectsGrid() {
   const projects = getGridProjects();
@@ -122,17 +121,6 @@ export function AllProjectsGrid() {
             </motion.li>
           ))}
         </motion.ul>
-
-        <p className="mt-10 text-sm text-text-secondary">
-          Looking for a deeper dive?{" "}
-          <ScrollToHash
-            href="#work"
-            className="text-signal transition-opacity duration-200 ease-signature hover:opacity-80"
-          >
-            See featured case studies
-          </ScrollToHash>
-          .
-        </p>
       </div>
     </section>
   );

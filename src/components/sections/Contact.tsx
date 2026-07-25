@@ -84,11 +84,7 @@ export function Contact() {
           <div className="grid lg:grid-cols-2">
             {/* Left: channels */}
             <div className="flex flex-col border-b border-border p-6 sm:p-8 lg:border-r lg:border-b-0">
-              <p className="inline-flex w-fit items-center gap-2 rounded-full border border-signal/35 bg-signal-muted px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-signal uppercase">
-                <span
-                  aria-hidden
-                  className="size-1.5 rounded-full bg-signal"
-                />
+              <p className="font-mono text-[11px] leading-relaxed tracking-[0.08em] text-signal">
                 {personal.availability}
               </p>
 
