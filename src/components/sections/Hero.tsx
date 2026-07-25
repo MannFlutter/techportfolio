@@ -9,6 +9,7 @@ import {
 import { heroStats, personal } from "@/lib/data/personal";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { ScrollToHash } from "@/components/ui/ScrollToHash";
+import { SignalPulse } from "@/components/ui/SignalPulse";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -85,8 +86,9 @@ export function Hero() {
                 <dt className="font-mono text-[10px] tracking-[0.12em] text-text-secondary uppercase">
                   {stat.label}
                 </dt>
-                <dd className="mt-1.5 font-display text-xl font-medium tracking-tight text-text-primary sm:text-2xl">
+                <dd className="mt-1.5 flex items-center gap-2 font-display text-xl font-medium tracking-tight text-text-primary sm:text-2xl">
                   {stat.value}
+                  {stat.live ? <SignalPulse /> : null}
                 </dd>
               </div>
             ))}

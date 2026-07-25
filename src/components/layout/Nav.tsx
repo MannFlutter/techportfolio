@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLenisScroll } from "@/components/layout/SmoothScrollProvider";
+import { personal } from "@/lib/data/personal";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -85,7 +86,7 @@ export function Nav() {
           ))}
           <li>
             <a
-              href="/resume/Manthan_Resume.pdf"
+              href={personal.resumePath}
               download
               className="inline-flex h-9 items-center rounded-md border border-border bg-surface px-3 text-sm font-medium text-text-primary transition-colors duration-200 ease-signature hover:border-signal/40 hover:text-signal"
             >
@@ -127,7 +128,7 @@ export function Nav() {
           ))}
           <li className="pt-2">
             <a
-              href="/resume/Manthan_Resume.pdf"
+              href={personal.resumePath}
               download
               className="inline-flex h-10 w-full items-center justify-center rounded-md border border-border bg-surface text-sm font-medium text-text-primary"
               onClick={() => setOpen(false)}

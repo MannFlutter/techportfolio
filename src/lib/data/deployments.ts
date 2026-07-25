@@ -27,10 +27,10 @@ export const odigoDeployments: DeploymentRegion[] = [
 
 export const odigoCapabilities = [
   "ROS and ROS 2 integration",
-  "WebSockets, Serial/UART, WebRTC",
+  "MQTT, WebSockets, Serial/UART, BLE/GATT, WebRTC",
   "Live telemetry and robot-operator interfaces",
   "Secure, low-latency communication for production deployment",
 ] as const;
 
 export const odigoSummary =
-  "Developed the Flutter and Android applications powering the Odigo advertising-robot platform — live across malls in India and Dubai.";
+  "Developed the Flutter and Android applications powering the Odigo advertising-robot platform.";

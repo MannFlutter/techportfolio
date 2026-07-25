@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { personal } from "@/lib/data/personal";
 
 const social = [
   {
@@ -23,10 +24,10 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="space-y-1">
           <p className="font-display text-sm font-medium text-text-primary">
-            Manthan Patel
+            {personal.name}
           </p>
           <p className="text-sm text-text-secondary">
-            Senior Flutter Engineer · Gujarat, India
+            {personal.title} · {personal.location}
           </p>
         </div>
 

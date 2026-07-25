@@ -7,6 +7,7 @@ import {
   reducedMotionVariants,
   staggerContainer,
 } from "@/lib/animations/motionVariants";
+import { withBasePath } from "@/lib/basePath";
 import { personal } from "@/lib/data/personal";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { RevealText } from "@/components/ui/RevealText";
@@ -34,7 +35,7 @@ export function About() {
         >
           <div className="overflow-hidden rounded-lg border border-border bg-surface">
             <Image
-              src={personal.profileImage}
+              src={withBasePath(personal.profileImage)}
               alt={`${personal.name} — profile photo`}
               width={480}
               height={600}
@@ -57,7 +58,7 @@ export function About() {
             id="about-heading"
             className="mt-3 font-display text-2xl font-medium tracking-tight text-text-primary sm:text-3xl"
           >
-            {personal.title}
+            {personal.aboutHeading}
           </RevealText>
 
           <motion.div

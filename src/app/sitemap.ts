@@ -3,7 +3,7 @@ import { caseStudySlugs } from "@/lib/data/projects";
 
 export const dynamic = "force-static";
 
-const siteUrl = "https://mannflutter.github.io/techportfolio";
+const siteUrl = "https://manthanpatel.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const caseStudies = caseStudySlugs.map((slug) => ({

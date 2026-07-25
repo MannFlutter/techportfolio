@@ -3,15 +3,19 @@ export type SkillCategory = {
   skills: string[];
 };
 
-/** Ported from technical_skills.dart — categorized lists, no percentage bars. */
+/**
+ * Merged from technical_skills.dart + personal_info.dart `skills`, deduped.
+ * Robotics protocols live in the Robotics section, not here.
+ * Categorized lists only — no percentage bars or charts.
+ */
 export const technicalSkills: SkillCategory[] = [
   {
     title: "Flutter Development",
     skills: [
       "Advanced UI design (responsive/adaptive screens)",
       "In-App Purchases, Stripe & Razorpay integration",
-      "Audio/Video Streaming",
-      "Voice & Video Call SDKs: Telnyx, ZegoCloud, Twilio",
+      "Audio/video streaming",
+      "Voice & video call SDKs: Telnyx, ZegoCloud, Twilio",
     ],
   },
   {
@@ -19,15 +23,24 @@ export const technicalSkills: SkillCategory[] = [
     skills: ["Riverpod", "Provider", "GetX", "BLoC"],
   },
   {
-    title: "Local Storage & Databases",
-    skills: ["Hive", "Shared Preferences", "Get Storage", "Sqflite", "ObjectBox"],
+    title: "Storage & Persistence",
+    skills: ["Hive", "Sqflite", "ObjectBox", "Get Storage", "Shared Preferences"],
   },
   {
-    title: "API Integration",
+    title: "APIs & Data",
     skills: [
-      "RESTful APIs using Dio and HTTP",
+      "REST via Dio and HTTP",
+      "GraphQL",
       "Repository & model-based architecture",
-      "Local caching and Postman-based testing",
+      "Local caching, Postman-based testing",
+    ],
+  },
+  {
+    title: "Firebase & Auth",
+    skills: [
+      "Firebase Authentication",
+      "Cloud Functions",
+      "OAuth & social logins: Google, Apple, Facebook, Twitter, LinkedIn",
     ],
   },
   {
@@ -39,25 +52,16 @@ export const technicalSkills: SkillCategory[] = [
     ],
   },
   {
-    title: "Authentication",
+    title: "Release & CI/CD",
     skills: [
-      "Firebase Authentication",
-      "OAuth & social logins: Google, Apple, Facebook, Twitter, LinkedIn",
-    ],
-  },
-  {
-    title: "Robotics & Connected Systems",
-    skills: [
-      "ROS / ROS 2",
-      "WebSockets",
-      "Serial/UART",
-      "WebRTC",
-      "Live telemetry interfaces",
+      "Codemagic pipelines",
+      "App Store & Play Store releases",
+      "Multi-module version compatibility",
     ],
   },
 ];
 
-/** High-level engineering focus areas for the Expertise section. */
+/** How the work gets done — the approach, not the tool list. */
 export const engineeringExpertise = [
   "Clean Architecture",
   "Modular codebases",
@@ -66,4 +70,5 @@ export const engineeringExpertise = [
   "Profiling & render optimization",
   "Concurrent communication",
   "Production reliability",
+  "ROS integration",
 ] as const;

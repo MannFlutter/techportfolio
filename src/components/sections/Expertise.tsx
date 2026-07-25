@@ -21,7 +21,7 @@ export function Expertise() {
   return (
     <section
       id="expertise"
-      className="scroll-mt-20 border-b border-border"
+      className="scroll-mt-20 border-b border-border bg-surface/25"
       aria-labelledby="expertise-heading"
     >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
@@ -37,9 +37,7 @@ export function Expertise() {
             Engineering focus
           </RevealText>
           <p className="mt-4 max-w-[70ch] text-base leading-relaxed text-text-secondary">
-            Clean Architecture · modular codebases · offline-first strategies ·
-            high-performance apps · profiling & render optimization · concurrent
-            communication · production reliability.
+            The tools I reach for most, grouped by where they do the work.
           </p>
         </div>
 

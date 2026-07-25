@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/basePath";
+
 export type Project = {
   slug: string;
   title: string;
@@ -9,7 +11,7 @@ export type Project = {
   android?: string;
   ios?: string;
   responsibilities?: string;
-  /** Paths under /public, e.g. /screenshots/karuna/screen_1.webp */
+  /** Paths under /public (basePath-prefixed for static export). */
   screenshots: string[];
   /** Full case-study route at /work/[slug] */
   flagship?: boolean;
@@ -20,17 +22,15 @@ export type Project = {
 };
 
 function shots(folder: string, count: number): string[] {
-  return Array.from(
-    { length: count },
-    (_, i) => `/screenshots/${folder}/screen_${i + 1}.webp`,
+  return Array.from({ length: count }, (_, i) =>
+    withBasePath(`/screenshots/${folder}/screen_${i + 1}.webp`),
   );
 }
 
 /** Numbered mockups like satsang/1.webp, bonno/1.webp */
 function numberedShots(folder: string, count: number): string[] {
-  return Array.from(
-    { length: count },
-    (_, i) => `/screenshots/${folder}/${i + 1}.webp`,
+  return Array.from({ length: count }, (_, i) =>
+    withBasePath(`/screenshots/${folder}/${i + 1}.webp`),
   );
 }
 
@@ -123,6 +123,7 @@ export const projects: Project[] = [
     responsibilities:
       "Architected multi-role system, integrated real-time crypto APIs, built secure auth with Firebase, and designed analytics interfaces.",
     screenshots: [],
+    flagship: true,
     order: 9,
   },
   {
@@ -686,6 +687,7 @@ export const caseStudySlugs = [
   "crimechime",
   "country-kart",
   "bonno",
+  "takeprofit",
   "medan-tv",
 ] as const;
 

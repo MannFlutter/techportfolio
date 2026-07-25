@@ -32,17 +32,19 @@ const siteUrl = "https://manthanpatel.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Manthan Patel — Senior Flutter Engineer",
+    default: "Manthan Patel — Senior Mobile & ROS Engineer",
     template: "%s · Manthan Patel",
   },
   description:
-    "Senior Flutter Engineer specializing in robotics, real-time systems, and enterprise mobile. Production systems including the Odigo advertising-robot platform.",
+    "Senior Mobile & ROS Engineer building production robotics, real-time, and enterprise systems in Flutter — including the Odigo advertising-robot platform, live in India and Dubai.",
   keywords: [
     "Flutter",
-    "Senior Flutter Engineer",
-    "Robotics",
+    "Senior Mobile & ROS Engineer",
     "ROS",
+    "ROS 2",
+    "Robotics",
     "Odigo",
+    "Real-time systems",
     "Mobile development",
     "Manthan Patel",
   ],
@@ -53,12 +55,12 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteUrl,
     siteName: "Manthan Patel",
-    title: "Manthan Patel — Senior Flutter Engineer",
+    title: "Manthan Patel — Senior Mobile & ROS Engineer",
     description:
       "Robotics, real-time systems, and enterprise Flutter — including the Odigo advertising-robot platform live in India and Dubai.",
     images: [
       {
-        url: personal.profileImage,
+        url: personal.profileImagePath,
         width: 480,
         height: 600,
         alt: `${personal.name} — profile photo`,
@@ -67,10 +69,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manthan Patel — Senior Flutter Engineer",
+    title: "Manthan Patel — Senior Mobile & ROS Engineer",
     description:
       "Robotics, real-time systems, and enterprise Flutter — including the Odigo advertising-robot platform.",
-    images: [personal.profileImage],
+    images: [personal.profileImagePath],
   },
   robots: {
     index: true,
@@ -79,6 +81,33 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.fullName,
+  alternateName: personal.name,
+  jobTitle: personal.title,
+  description: personal.heroSubhead,
+  email: `mailto:${personal.email}`,
+  url: siteUrl,
+  image: `${siteUrl}${personal.profileImagePath}`,
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Gujarat",
+    addressCountry: "IN",
+  },
+  sameAs: [personal.githubUrl, personal.linkedinUrl],
+  knowsAbout: [
+    "Flutter",
+    "Dart",
+    "ROS",
+    "ROS 2",
+    "Real-time systems",
+    "Robotics operator interfaces",
+    "Mobile architecture",
+  ],
 };
 
 export default function RootLayout({
@@ -92,6 +121,10 @@ export default function RootLayout({
       className={`${interTight.variable} ${inter.variable} ${jetbrains.variable} dark h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-text-primary">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <SmoothScrollProvider>
           <Nav />
           <main className="flex-1">{children}</main>
