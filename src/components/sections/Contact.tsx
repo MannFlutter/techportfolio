@@ -41,25 +41,50 @@ const channels = [
   },
 ] as const;
 
+type FormStatus = "idle" | "sending" | "sent" | "error";
+
 export function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "opened">("idle");
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const subject = encodeURIComponent(
-      `Portfolio inquiry from ${name.trim() || "a visitor"}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-    setName("");
-    setEmail("");
-    setMessage("");
-    setStatus("opened");
+    if (status === "sending") return;
+
+    setStatus("sending");
+
+    try {
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${personal.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: name.trim(),
+            email: email.trim(),
+            message: message.trim(),
+            _subject: `Portfolio inquiry from ${name.trim() || "a visitor"}`,
+            _template: "table",
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setName("");
+      setEmail("");
+      setMessage("");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -157,6 +182,7 @@ export function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
+                  disabled={status === "sending"}
                   className={inputClassName}
                 />
               </div>
@@ -177,6 +203,7 @@ export function Contact() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
+                  disabled={status === "sending"}
                   className={inputClassName}
                 />
               </div>
@@ -196,26 +223,38 @@ export function Contact() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="What are you building, and how can I help?"
+                  disabled={status === "sending"}
                   className={cn(inputClassName, "min-h-[140px] resize-y")}
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-signal px-5 text-sm font-medium text-primary-foreground transition-opacity duration-200 ease-signature hover:opacity-90"
+                disabled={status === "sending"}
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-signal px-5 text-sm font-medium text-primary-foreground transition-opacity duration-200 ease-signature hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send className="size-4" aria-hidden />
-                Send message
+                {status === "sending" ? "Sending…" : "Send message"}
               </button>
 
-              {status === "opened" ? (
-                <p className="text-xs text-text-secondary" role="status">
-                  Your email client should open with the message ready to send.
+              {status === "sent" ? (
+                <p className="text-xs text-signal" role="status">
+                  Message sent. I&apos;ll get back to you soon.
+                </p>
+              ) : status === "error" ? (
+                <p className="text-xs text-red-400" role="alert">
+                  Couldn&apos;t send right now. Email me directly at{" "}
+                  <a
+                    href={`mailto:${personal.email}`}
+                    className="underline underline-offset-2"
+                  >
+                    {personal.email}
+                  </a>
+                  .
                 </p>
               ) : (
                 <p className="text-xs text-text-secondary">
-                  Submitting opens your email app addressed to{" "}
-                  {personal.email}.
+                  Messages are delivered to {personal.email}.
                 </p>
               )}
             </form>
@@ -227,4 +266,4 @@ export function Contact() {
 }
 
 const inputClassName =
-  "mt-2 w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-text-primary outline-none transition-[border-color,box-shadow] duration-200 ease-signature placeholder:text-text-secondary/60 focus:border-signal/50 focus:ring-2 focus:ring-signal/20";
+  "mt-2 w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-text-primary outline-none transition-[border-color,box-shadow] duration-200 ease-signature placeholder:text-text-secondary/60 focus:border-signal/50 focus:ring-2 focus:ring-signal/20 disabled:opacity-60";

@@ -21,7 +21,7 @@ export const personal = {
   githubUrl: "https://github.com/MannFlutter",
   linkedinUrl: "https://www.linkedin.com/in/manthan-patel-953639212",
   /** Public asset — must include basePath (raw <a> / unoptimized Image). */
-  resumePath: withBasePath("/resume/Manthan_Resume.pdf"),
+  resumePath: withBasePath("/resume/Manthan-Resume.pdf"),
   /** Public asset — must include basePath (unoptimized next/image). */
   profileImage: withBasePath("/images/profile.jpg"),
   /** Unprefixed — for absolute metadata URLs resolved against metadataBase. */
