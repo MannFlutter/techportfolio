@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { caseStudySlugs } from "@/lib/data/projects";
 
-const siteUrl = "https://manthanpatel.dev";
+export const dynamic = "force-static";
+
+const siteUrl = "https://mannflutter.github.io/techportfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const caseStudies = caseStudySlugs.map((slug) => ({
