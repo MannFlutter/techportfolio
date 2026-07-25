@@ -13,7 +13,7 @@ export const personal = {
   title: "Senior Mobile & ROS Engineer",
   email: "mannpatel270@gmail.com",
   phone: "+91 8401187756",
-  location: "Gujarat, India",
+  location: "Ahmedabad, Gujarat, India",
   availability:
     "Senior Flutter Engineer • Mobile Architecture • Product Engineering",
   experienceLabel: "5+ years",
@@ -27,7 +27,7 @@ export const personal = {
   /** Unprefixed — for absolute metadata URLs resolved against metadataBase. */
   profileImagePath: "/images/profile.jpg",
   heroEyebrow:
-    "Gujarat, India · Senior Flutter Engineer • Mobile Architecture • Product Engineering",
+    "Ahmedabad, Gujarat, India · Senior Flutter Engineer • Mobile Architecture • Product Engineering",
   heroHeadline:
     "Senior Mobile & ROS Engineer — building production robotics, real-time, and enterprise systems in Flutter.",
   heroSubhead:

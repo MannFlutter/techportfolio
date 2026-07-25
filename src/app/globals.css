@@ -19,7 +19,7 @@
   --color-popover: var(--surface);
   --color-popover-foreground: var(--text-primary);
   --color-primary: var(--accent);
-  --color-primary-foreground: #0a0a0b;
+  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--surface);
   --color-secondary-foreground: var(--text-primary);
   --color-muted: var(--surface);
@@ -61,6 +61,7 @@
   --text-secondary: #9a9aa3;
   --accent: #4ade80;
   --accent-muted: rgba(74, 222, 128, 0.14);
+  --primary-foreground: #0a0a0b;
 
   --font-display: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -69,16 +70,7 @@
   --ease-signature: cubic-bezier(0.22, 1, 0.36, 1);
   --radius-base: 8px;
   --radius: 8px;
-}
-
-[data-theme="light"] {
-  --background: #fafaf9;
-  --surface: #ffffff;
-  --border: #e5e5e4;
-  --text-primary: #18181b;
-  --text-secondary: #52525b;
-  --accent: #16a34a;
-  --accent-muted: rgba(22, 163, 74, 0.12);
+  color-scheme: dark;
 }
 
 @layer base {
