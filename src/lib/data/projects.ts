@@ -105,8 +105,6 @@ export const projects: Project[] = [
       "Live telemetry and robot-operator interfaces",
       "WebSockets, Serial/UART, WebRTC",
       "Secure, low-latency communication for production",
-      "Cross-platform support (Android, iOS, Web, Desktop)",
-      "Multi-module deployment and version compatibility",
     ],
     responsibilities:
       "Developed the Flutter and Android applications for the Odigo platform at Etihad Rail, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), and built the voice assistant and indoor navigation flow: the robot runs in cruise mode looping ambient images/videos, and on tap switches to an active listening state (\"How may I help you?\"). When a passenger asks something like \"Where is the washroom?\", Odigo resolves the query and renders the full indoor map with a live route drawn from the robot's current position to the destination. Multi-language support included.",

@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import {
   odigoCapabilities,
   odigoDeployments,
-  odigoEtihadCapabilities,
   odigoEtihadSummary,
   odigoSummary,
 } from "@/lib/data/deployments";
@@ -150,30 +149,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
       ) : null}
 
       {isEtihad ? (
-        <>
-          <CaseStudySection title="Capabilities">
-            <ul className="space-y-2.5">
-              {odigoEtihadCapabilities.map((item) => (
-                <li
-                  key={item}
-                  className="flex gap-3 text-sm leading-relaxed text-text-primary"
-                >
-                  <span
-                    aria-hidden
-                    className="mt-2 size-1.5 shrink-0 rounded-full bg-signal"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </CaseStudySection>
-          <CaseStudySection title="Live deployments">
-            <span className="inline-flex max-w-full items-center gap-2 rounded-md border border-signal/25 bg-signal/[0.06] px-3.5 py-2.5 font-mono text-xs leading-relaxed tracking-wide text-text-primary sm:text-[13px]">
-              <MapPin className="size-3.5 shrink-0 text-signal" aria-hidden />
-              UAE — Etihad Rail, Fujairah Passenger Station
-            </span>
-          </CaseStudySection>
-        </>
+        <CaseStudySection title="Live deployments">
+          <span className="inline-flex max-w-full items-center gap-2 rounded-md border border-signal/25 bg-signal/[0.06] px-3.5 py-2.5 font-mono text-xs leading-relaxed tracking-wide text-text-primary sm:text-[13px]">
+            <MapPin className="size-3.5 shrink-0 text-signal" aria-hidden />
+            UAE — Etihad Rail, Fujairah Passenger Station
+          </span>
+        </CaseStudySection>
       ) : null}
 
       {project.screenshots.length > 0 ? (

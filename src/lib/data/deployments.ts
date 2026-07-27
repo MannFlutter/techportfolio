@@ -42,14 +42,6 @@ export const odigoEtihadDeployments: DeploymentRegion[] = [
   },
 ];
 
-export const odigoEtihadCapabilities = [
-  "Voice-driven indoor navigation with live route rendering",
-  "ROS integration (ROS 2 in progress)",
-  "WebSockets, Serial/UART, WebRTC",
-  "Live telemetry and robot-operator interfaces",
-  "Secure, low-latency communication for production deployment",
-] as const;
-
 export const odigoEtihadSummary =
   "Developed the Flutter and Android applications powering the Odigo advertising-and-guidance robot deployed at Etihad Rail's Fujairah passenger station — the UAE's first AI robot deployment at a national railway station.";
 

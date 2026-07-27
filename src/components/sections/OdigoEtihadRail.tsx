@@ -23,8 +23,6 @@ const FEATURES = [
   "Live telemetry and robot-operator interfaces",
   "WebSockets, Serial/UART, WebRTC",
   "Secure, low-latency communication for production",
-  "Cross-platform support (Android, iOS, Web, Desktop)",
-  "Multi-module deployment and version compatibility",
 ] as const;
 
 const TECH_STACK = [
@@ -38,14 +36,6 @@ const TECH_STACK = [
   { label: "Real-time Communication", upcoming: false },
   { label: "Indoor mapping / wayfinding engine", upcoming: false },
   { label: "Voice/NLU (multilingual)", upcoming: false },
-] as const;
-
-const CAPABILITIES = [
-  "Voice-driven indoor navigation with live route rendering",
-  "ROS integration (ROS 2 in progress)",
-  "WebSockets, Serial/UART, WebRTC",
-  "Live telemetry and robot-operator interfaces",
-  "Secure, low-latency communication for production deployment",
 ] as const;
 
 type Reading = {
@@ -108,7 +98,7 @@ function OperatorView() {
 
   const metrics = [
     {
-      label: "ROS link round-trip",
+      label: "round-trip",
       value: reading.latency.toFixed(0),
       unit: "ms",
     },
@@ -297,12 +287,6 @@ export function OdigoEtihadRail() {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Capabilities */}
-        <div className="mt-14 max-w-[70ch]">
-          <SectionHeading>Capabilities</SectionHeading>
-          <BulletList items={CAPABILITIES} />
         </div>
 
         {/* Live deployments */}
