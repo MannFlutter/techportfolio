@@ -76,6 +76,45 @@ export const projects: Project[] = [
     order: 1,
   },
   {
+    slug: "odigo-etihad-rail",
+    title: "Odigo–Etihad Rail",
+    shortDescription:
+      "Voice assistant, indoor navigation & robot platform at Etihad Rail Fujairah",
+    fullDescription:
+      "Cross-platform application suite for a ROS-based guidance robot deployed at Etihad Rail's Fujairah station. Built Flutter and Android interfaces with real-time robot communication, a multilingual voice assistant, live indoor navigation, and secure low-latency control — running in a live public infrastructure deployment, not a demo. Currently built on ROS, with ROS 2 integration underway.",
+    category: "Robotics",
+    tech: [
+      "Flutter",
+      "Java",
+      "ROS",
+      "ROS 2 (upcoming)",
+      "WebSockets",
+      "Serial/UART",
+      "WebRTC",
+      "Real-time Communication",
+      "Indoor mapping / wayfinding engine",
+      "Voice/NLU (multilingual)",
+    ],
+    features: [
+      "ROS integration (ROS 2 migration planned)",
+      "Flutter–ROS bridge for real-time robot communication",
+      "Voice assistant with wake-on-tap interaction (\"How may I help you?\")",
+      "Indoor map rendering with live route-from-current-position navigation",
+      "Cruise-mode ambient display (images/video loop) with seamless transition to assistant mode",
+      "Multi-language voice and UI support",
+      "Live telemetry and robot-operator interfaces",
+      "WebSockets, Serial/UART, WebRTC",
+      "Secure, low-latency communication for production",
+      "Cross-platform support (Android, iOS, Web, Desktop)",
+      "Multi-module deployment and version compatibility",
+    ],
+    responsibilities:
+      "Developed the Flutter and Android applications for the Odigo platform at Etihad Rail, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), and built the voice assistant and indoor navigation flow: the robot runs in cruise mode looping ambient images/videos, and on tap switches to an active listening state (\"How may I help you?\"). When a passenger asks something like \"Where is the washroom?\", Odigo resolves the query and renders the full indoor map with a live route drawn from the robot's current position to the destination. Multi-language support included.",
+    screenshots: [],
+    flagship: true,
+    order: 2,
+  },
+  {
     slug: "spice",
     title: "Spice",
     shortDescription:
@@ -157,7 +196,7 @@ export const projects: Project[] = [
       "Architected the contribution flow, integrated live streaming back-end, implemented secure wallet and in-app purchase features, optimized UI for seamless donation experiences, and ensured reliable real-time updates.",
     screenshots: shots("karuna", 5),
     flagship: true,
-    order: 4,
+    order: 5,
   },
   {
     slug: "satsang",
@@ -192,7 +231,7 @@ export const projects: Project[] = [
       "Developed the complete Flutter application, integrated audio and video streaming, implemented digital scripture and magazine readers, optimized content loading for smooth performance, integrated backend APIs, and delivered a seamless cross-platform spiritual experience.",
     screenshots: numberedShots("satsang", 9),
     flagship: true,
-    order: 2,
+    order: 3,
   },
 
   // ── Grid (from projects.dart) ─────────────────────────────
@@ -224,7 +263,7 @@ export const projects: Project[] = [
       "Built real-time chat infrastructure, integrated voice & video calling features, and designed a lightweight cross-platform UI.",
     screenshots: shots("mamgo", 8),
     flagship: true,
-    order: 5,
+    order: 6,
   },
   {
     slug: "crimechime",
@@ -254,7 +293,7 @@ export const projects: Project[] = [
       "Built real-time data reporting system, integrated advanced mapping features, and optimized geographic clustering UX.",
     screenshots: shots("crimechime", 5),
     flagship: true,
-    order: 6,
+    order: 7,
   },
   {
     slug: "country-kart",
@@ -277,7 +316,7 @@ export const projects: Project[] = [
       "Led app architecture, integrated secure auth flows, built custom chat, and crafted intuitive service discovery screens.",
     screenshots: shots("country_kart", 6),
     flagship: true,
-    order: 7,
+    order: 8,
   },
   {
     slug: "bonno",
@@ -315,7 +354,7 @@ export const projects: Project[] = [
       "Led the end-to-end Flutter application development, architected the service booking workflow, integrated secure payment gateway, real-time notifications, maps, backend APIs, and authentication, optimized the user experience across multiple pet service modules, and delivered a scalable cross-platform solution for premium pet care.",
     screenshots: numberedShots("bonno", 10),
     flagship: true,
-    order: 3,
+    order: 4,
   },
   {
     slug: "blupaws",
@@ -681,6 +720,7 @@ export function hasProjectDetail(project: Project): boolean {
 
 export const caseStudySlugs = [
   "odigo",
+  "odigo-etihad-rail",
   "satsang",
   "bonno",
   "karuna-care",

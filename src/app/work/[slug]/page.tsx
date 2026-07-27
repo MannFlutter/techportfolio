@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { notFound } from "next/navigation";
 import {
   odigoCapabilities,
   odigoDeployments,
+  odigoEtihadCapabilities,
+  odigoEtihadSummary,
   odigoSummary,
 } from "@/lib/data/deployments";
 import {
@@ -16,8 +19,8 @@ import {
 import { CaseStudyHero } from "@/components/work/CaseStudyHero";
 import { CaseStudySection } from "@/components/work/CaseStudySection";
 import { ScreenshotShowcase } from "@/components/work/ScreenshotShowcase";
-import { TechStackList } from "@/components/work/TechStackList";
 import { DeploymentList } from "@/components/ui/DeploymentList";
+import { Badge } from "@/components/ui/Badge";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -60,6 +63,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   const others = getFlagshipProjects().filter((p) => p.slug !== project.slug);
   const isOdigo = project.slug === "odigo";
+  const isEtihad = project.slug === "odigo-etihad-rail";
 
   return (
     <article className="pb-20">
@@ -67,9 +71,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       <CaseStudySection title="Overview">
         <p className="max-w-[70ch] text-base leading-relaxed text-text-secondary">
-          {isOdigo ? odigoSummary : project.fullDescription}
+          {isOdigo
+            ? odigoSummary
+            : isEtihad
+              ? odigoEtihadSummary
+              : project.fullDescription}
         </p>
-        {isOdigo ? (
+        {isOdigo || isEtihad ? (
           <p className="mt-4 max-w-[70ch] text-base leading-relaxed text-text-secondary">
             {project.fullDescription}
           </p>
@@ -102,7 +110,19 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </CaseStudySection>
 
       <CaseStudySection title="Tech stack">
-        <TechStackList tech={project.tech} />
+        <ul className="flex flex-wrap gap-2">
+          {project.tech.map((item) => (
+            <li key={item}>
+              {item.includes("upcoming") ? (
+                <span className="inline-flex items-center rounded-md border border-dashed border-signal/40 bg-transparent px-2.5 py-1 font-mono text-[11px] tracking-wide text-signal/80">
+                  {item}
+                </span>
+              ) : (
+                <Badge>{item}</Badge>
+              )}
+            </li>
+          ))}
+        </ul>
       </CaseStudySection>
 
       {isOdigo ? (
@@ -125,6 +145,33 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </CaseStudySection>
           <CaseStudySection title="Live deployments">
             <DeploymentList regions={odigoDeployments} />
+          </CaseStudySection>
+        </>
+      ) : null}
+
+      {isEtihad ? (
+        <>
+          <CaseStudySection title="Capabilities">
+            <ul className="space-y-2.5">
+              {odigoEtihadCapabilities.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 text-sm leading-relaxed text-text-primary"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-2 size-1.5 shrink-0 rounded-full bg-signal"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </CaseStudySection>
+          <CaseStudySection title="Live deployments">
+            <span className="inline-flex max-w-full items-center gap-2 rounded-md border border-signal/25 bg-signal/[0.06] px-3.5 py-2.5 font-mono text-xs leading-relaxed tracking-wide text-text-primary sm:text-[13px]">
+              <MapPin className="size-3.5 shrink-0 text-signal" aria-hidden />
+              UAE — Etihad Rail, Fujairah Passenger Station
+            </span>
           </CaseStudySection>
         </>
       ) : null}

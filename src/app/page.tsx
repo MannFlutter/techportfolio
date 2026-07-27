@@ -6,6 +6,7 @@ import { Expertise } from "@/components/sections/Expertise";
 import { FeaturedStudies } from "@/components/sections/FeaturedStudies";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Hero } from "@/components/sections/Hero";
+import { OdigoEtihadRail } from "@/components/sections/OdigoEtihadRail";
 import { RoboticsShowcase } from "@/components/sections/RoboticsShowcase";
 import { SignalDivider } from "@/components/ui/SignalPulse";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Experience />
       <SignalDivider />
       <RoboticsShowcase />
+      <OdigoEtihadRail />
       <FeaturedStudies />
       <FeaturedWork />
       <AllProjectsGrid />
