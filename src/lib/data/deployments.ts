@@ -5,18 +5,34 @@ export type DeploymentRegion = {
 
 /**
  * Live Odigo advertising-robot deployments (India + Dubai).
+ * India sites reconciled from Odigo-V3 destination list (name + city only).
  */
 export const odigoDeployments: DeploymentRegion[] = [
   {
     region: "India",
     sites: [
-      "Jio World Drive (Bandra)",
-      "Lulu Mall Lucknow",
-      "Lulu Mall Trivandrum",
-      "Pacific Mall",
-      "R City Mall",
-      "DLF Mall",
-      "Additional commercial sites",
+      "Wave Mall (Noida)",
+      "Spectrum Mall (Noida)",
+      "Pacific Jaipur (Jaipur)",
+      "Pacific Mall NSP (New Delhi)",
+      "Pacific Mall Jasola (New Delhi)",
+      "Pacific Mall (Faridabad)",
+      "Mall of Faridabad (Faridabad)",
+      "DLF Avenue Mall (New Delhi)",
+      "Pacific Mall D21 (New Delhi)",
+      "WTP Mall (Jaipur)",
+      "Mall of Ranchi (Ranchi)",
+      "Lulu Mall (Bangalore)",
+      "Lulu Mall (Kochi)",
+      "LuLu Mall (Thiruvananthapuram)",
+      "Lulu Mall (Lucknow)",
+      "The Capital Mall (Mumbai)",
+      "Pacific Mall (New Delhi)",
+      "Crown Mall (Lucknow)",
+      "R City Mall (Mumbai)",
+      "DLF Mall of India (Noida)",
+      "VR Mall (Surat)",
+      "Jio World Drive (Mumbai)",
     ],
   },
   {

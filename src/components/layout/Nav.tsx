@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLenisScroll } from "@/components/layout/SmoothScrollProvider";
 import { personal } from "@/lib/data/personal";
@@ -19,43 +19,72 @@ const links = [
   { hash: "#contact", label: "Contact" },
 ] as const;
 
+/** Distance from viewport top used to decide the active section. */
+const SECTION_MARKER_PX = 112;
+function getActiveHash(): string {
+  let current = "";
+
+  for (const link of links) {
+    const section = document.querySelector<HTMLElement>(link.hash);
+    if (section && section.getBoundingClientRect().top <= SECTION_MARKER_PX) {
+      current = link.hash;
+    }
+  }
+
+  if (
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight - 8
+  ) {
+    current = "#contact";
+  }
+
+  return current;
+}
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
+  const pinnedHash = useRef<string | null>(null);
   const pathname = usePathname();
   const { scrollTo } = useLenisScroll();
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+    let frame = 0;
+    let lastScrolled = false;
+    let lastHash = "";
+
+    const sync = () => {
+      const nextScrolled = window.scrollY > 24;
+      if (nextScrolled !== lastScrolled) {
+        lastScrolled = nextScrolled;
+        setScrolled(nextScrolled);
+      }
 
       if (pathname !== "/") {
-        setActiveHash("");
+        if (lastHash !== "") {
+          lastHash = "";
+          setActiveHash("");
+        }
         return;
       }
 
-      const marker = window.scrollY + 112;
-      let current = "";
-
-      for (const link of links) {
-        const section = document.querySelector<HTMLElement>(link.hash);
-        if (section && section.offsetTop <= marker) current = link.hash;
+      const nextHash = pinnedHash.current ?? getActiveHash();
+      if (nextHash !== lastHash) {
+        lastHash = nextHash;
+        setActiveHash(nextHash);
       }
-
-      if (
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 8
-      ) {
-        current = "#contact";
-      }
-
-      setActiveHash(current);
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const tick = () => {
+      sync();
+      frame = requestAnimationFrame(tick);
+    };
+
+    sync();
+    frame = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
@@ -73,8 +102,18 @@ export function Nav() {
   ) => {
     if (pathname !== "/") return;
     event.preventDefault();
+    pinnedHash.current = hash;
     setActiveHash(hash);
-    scrollTo(hash);
+    scrollTo(hash, {
+      onComplete: () => {
+        // Re-snap in case layout shifted (images/fonts) during the tween.
+        scrollTo(hash, { immediate: true });
+        requestAnimationFrame(() => {
+          pinnedHash.current = null;
+          setActiveHash(getActiveHash() || hash);
+        });
+      },
+    });
     history.replaceState(null, "", hash);
     setOpen(false);
   };
@@ -111,8 +150,8 @@ export function Nav() {
         <ul className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <li key={link.hash}>
-              <Link
-                href={`/${link.hash}`}
+              <a
+                href={link.hash}
                 onClick={(e) => onNavClick(e, link.hash)}
                 aria-current={activeHash === link.hash ? "location" : undefined}
                 className={cn(
@@ -123,7 +162,7 @@ export function Nav() {
                 )}
               >
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
           <li>
@@ -159,8 +198,8 @@ export function Nav() {
         <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
           {links.map((link) => (
             <li key={link.hash}>
-              <Link
-                href={`/${link.hash}`}
+              <a
+                href={link.hash}
                 aria-current={activeHash === link.hash ? "location" : undefined}
                 className={cn(
                   "block rounded-md px-2 py-2.5 text-sm transition-colors duration-200 ease-signature",
@@ -171,7 +210,7 @@ export function Nav() {
                 onClick={(e) => onNavClick(e, link.hash)}
               >
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
           <li className="pt-2">

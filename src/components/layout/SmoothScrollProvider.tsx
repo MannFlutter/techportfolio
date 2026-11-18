@@ -1,21 +1,34 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import Lenis from "lenis";
+
+type ScrollToOptions = {
+  offset?: number;
+  immediate?: boolean;
+  onComplete?: () => void;
+};
 
 type LenisContextValue = {
   lenis: Lenis | null;
-  scrollTo: (target: string | HTMLElement, options?: { offset?: number }) => void;
+  scrollTo: (target: string | HTMLElement, options?: ScrollToOptions) => void;
 };
 
 const LenisContext = createContext<LenisContextValue>({
   lenis: null,
-  scrollTo: (target) => {
+  scrollTo: (target, options) => {
     if (typeof target === "string") {
       document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
     } else {
       target.scrollIntoView({ behavior: "smooth" });
     }
+    options?.onComplete?.();
   },
 });
 
@@ -65,16 +78,32 @@ export function SmoothScrollProvider({
     };
   }, []);
 
-  const scrollTo: LenisContextValue["scrollTo"] = (target, options) => {
-    const offset = options?.offset ?? -80;
-    if (lenis) {
-      lenis.scrollTo(target, { offset });
-      return;
-    }
-    const el =
-      typeof target === "string" ? document.querySelector(target) : target;
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const scrollTo = useCallback(
+    (target: string | HTMLElement, options?: ScrollToOptions) => {
+      // Default 0: Lenis already honors CSS scroll-margin (scroll-mt-*).
+      const offset = options?.offset ?? 0;
+      if (lenis) {
+        lenis.scrollTo(target, {
+          offset,
+          immediate: options?.immediate,
+          onComplete: options?.onComplete,
+        });
+        return;
+      }
+      const el =
+        typeof target === "string" ? document.querySelector(target) : target;
+      el?.scrollIntoView({
+        behavior: options?.immediate ? "instant" : "smooth",
+        block: "start",
+      });
+      if (options?.immediate) {
+        options.onComplete?.();
+      } else {
+        window.setTimeout(() => options?.onComplete?.(), 400);
+      }
+    },
+    [lenis],
+  );
 
   return (
     <LenisContext.Provider value={{ lenis, scrollTo }}>

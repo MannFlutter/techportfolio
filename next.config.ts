@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
   // Allow HMR when opening the site via LAN IP (e.g. phone/tablet on Wi‑Fi).
-  allowedDevOrigins: ["192.168.1.4"],
+  allowedDevOrigins: ["127.0.0.1", "192.168.1.4", "192.168.1.9"],
   images: {
     unoptimized: true,
   },

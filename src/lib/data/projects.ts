@@ -113,6 +113,50 @@ export const projects: Project[] = [
     order: 2,
   },
   {
+    slug: "odigo-clinic",
+    title: "Sccore Diagnostic Hub",
+    shortDescription:
+      "Android clinic kiosk that runs patient checkups on a diagnostic robot",
+    fullDescription:
+      "Sccore Diagnostic Hub is the patient-facing app for the Odigo Clinic robot. Built for a 27-inch Android kiosk, it walks a patient from check-in through the devices assigned to that robot and ends with a report. The flow covers registration, device selection, guided checkups, and results — including vitals, blood and urine kits, heart and lung checks, vision, dental, skin, infection screening, and mental-health questionnaires. Results stay on device and can be synced, exported as PDF, and shared on WhatsApp; an operator panel controls language, ads, the intro video, and the assistant. A 3D doctor on the device-selection screen greets the patient, listens in English and Hindi, and can suggest a checkup. The same app also plays clinic ads and can place a telemedicine video call.",
+    category: "Healthcare",
+    tech: [
+      "Flutter",
+      "Dart",
+      "Riverpod",
+      "Android Kiosk",
+      "Dio",
+      "Hive",
+      "ObjectBox",
+      "Socket.IO",
+      "Google Cloud Speech",
+      "Gemini TTS",
+      "WebView / Three.js",
+      "Bluetooth",
+      "USB Serial",
+      "Agora",
+      "Firebase Crashlytics",
+      "FCM",
+      "PDF Generation",
+      "easy_localization",
+    ],
+    features: [
+      "Patient registration and returning-patient lookup",
+      "Robot login and the list of medical devices assigned to that robot",
+      "Guided checkups for vitals, labs, heart and lungs, vision, dental, skin, infection kits, and questionnaires",
+      "On-device results, PDF reports, and WhatsApp delivery",
+      "Offline storage with sync to the clinic service",
+      "Ads, intro video, and an operator settings panel",
+      "Voice assistant with a 3D doctor that can recommend a checkup",
+      "Telemedicine video calls",
+    ],
+    responsibilities:
+      "Designed and built the Android clinic flow, from patient check-in and device checkups through reports, offline sync, and the on-screen doctor.",
+    screenshots: numberedShots("odigo-clinic", 6),
+    flagship: true,
+    order: 3,
+  },
+  {
     slug: "spice",
     title: "Spice",
     shortDescription:
@@ -229,7 +273,7 @@ export const projects: Project[] = [
       "Developed the complete Flutter application, integrated audio and video streaming, implemented digital scripture and magazine readers, optimized content loading for smooth performance, integrated backend APIs, and delivered a seamless cross-platform spiritual experience.",
     screenshots: numberedShots("satsang", 9),
     flagship: true,
-    order: 3,
+    order: 4,
   },
 
   // ── Grid (from projects.dart) ─────────────────────────────
@@ -719,6 +763,7 @@ export function hasProjectDetail(project: Project): boolean {
 export const caseStudySlugs = [
   "odigo",
   "odigo-etihad-rail",
+  "odigo-clinic",
   "satsang",
   "bonno",
   "karuna-care",
