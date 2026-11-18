@@ -8,6 +8,7 @@ import {
   staggerContainer,
 } from "@/lib/animations/motionVariants";
 import {
+  advertisingRobotTitle,
   odigoCapabilities,
   odigoDeployments,
   odigoScaleSummary,
@@ -59,10 +60,10 @@ export function RoboticsShowcase() {
             id="robotics-heading"
             className="mt-4 font-display text-3xl leading-[1.15] font-medium tracking-tight text-balance text-text-primary sm:text-4xl lg:text-[2.75rem]"
           >
-            Advertising-robot platform
+            {advertisingRobotTitle}
           </RevealText>
           <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-text-secondary sm:text-lg">
-            {odigoSummary} The platform has {odigoScaleSummary}.
+            {odigoSummary} The platform has {odigoScaleSummary}. ROS1 &amp; ROS 2 in production.
           </p>
         </div>
 

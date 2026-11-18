@@ -6,7 +6,8 @@ export const odigoDeploymentScale = {
 } as const;
 
 export const odigoScaleSummary = `${odigoDeploymentScale.robots} robots across ${odigoDeploymentScale.sites} sites in ${odigoDeploymentScale.regions}`;
-export const rosIntegration = "ROS 2 integration";
+export const advertisingRobotTitle = "Advertising-Robot platform";
+export const rosIntegration = "ROS1 & ROS 2 integration";
 
 export const odigoPerformance = [
   { label: "Round-trip latency", value: "~24 ms" },
@@ -95,7 +96,7 @@ export const odigoDeployments: DeploymentRegion[] = [
   },
 ];
 
-export const odigoProtocols = "WebSockets, Serial/UART, WebRTC, and Socket.IO";
+export const odigoProtocols = "WebSockets, Serial/UART, WebRTC";
 
 export const odigoCapabilities = [
   rosIntegration,

@@ -1,5 +1,5 @@
 import { withBasePath } from "@/lib/basePath";
-import { odigoProtocols, odigoScaleSummary, rosIntegration } from "./deployments";
+import { advertisingRobotTitle, odigoProtocols, odigoScaleSummary, rosIntegration } from "./deployments";
 
 export type Project = {
   slug: string;
@@ -55,7 +55,7 @@ export const projects: Project[] = [
   // ── Flagship ──────────────────────────────────────────────
   {
     slug: "odigo",
-    title: "Advertising-robot platform",
+    title: advertisingRobotTitle,
     shortDescription:
       "Flutter & Android apps powering a production advertising-robot platform",
     fullDescription:
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     ],
     responsibilities:
       "Designed and built the Android clinic flow, from patient check-in and device checkups through reports, offline sync, and the on-screen doctor.",
-    screenshots: numberedShots("odigo-clinic", 6),
+    screenshots: [],
     flagship: true,
     order: 3,
   },
