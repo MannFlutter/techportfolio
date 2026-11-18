@@ -6,7 +6,7 @@ import {
   reducedMotionVariants,
   staggerContainer,
 } from "@/lib/animations/motionVariants";
-import { experience } from "@/lib/data/experience";
+import { experience, experienceTotals } from "@/lib/data/experience";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { Badge } from "@/components/ui/Badge";
 import { RevealText } from "@/components/ui/RevealText";
@@ -39,8 +39,7 @@ export function Experience() {
             </RevealText>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-text-secondary">
-            Ordered oldest first — 5+ years total, moving from MVP delivery to
-            enterprise ownership to robotics.
+            {experienceTotals.yearsLabel} in software engineering across mobile products and production robotics.
           </p>
         </div>
 

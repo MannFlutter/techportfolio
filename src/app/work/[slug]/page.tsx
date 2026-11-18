@@ -6,16 +6,19 @@ import {
   odigoDeployments,
   odigoEtihadSummary,
   odigoSummary,
+  odigoScaleSummary,
 } from "@/lib/data/deployments";
 import {
   caseStudySlugs,
   getFlagshipProjects,
   getProjectBySlug,
   hasProjectDetail,
+  odigoOperatorWorkflows,
   type CaseStudySlug,
 } from "@/lib/data/projects";
 import { CaseStudyHero } from "@/components/work/CaseStudyHero";
 import { CaseStudySection } from "@/components/work/CaseStudySection";
+import { OdigoPerformance } from "@/components/work/OdigoPerformance";
 import { ScreenshotShowcase } from "@/components/work/ScreenshotShowcase";
 import { DeploymentList } from "@/components/ui/DeploymentList";
 import { Badge } from "@/components/ui/Badge";
@@ -112,13 +115,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <ul className="flex flex-wrap gap-2">
           {project.tech.map((item) => (
             <li key={item}>
-              {item.includes("upcoming") ? (
-                <span className="inline-flex items-center rounded-md border border-dashed border-signal/40 bg-transparent px-2.5 py-1 font-mono text-[11px] tracking-wide text-signal/80">
-                  {item}
-                </span>
-              ) : (
-                <Badge>{item}</Badge>
-              )}
+              <Badge>{item}</Badge>
             </li>
           ))}
         </ul>
@@ -142,7 +139,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
               ))}
             </ul>
           </CaseStudySection>
+          <CaseStudySection title="Operator workflows">
+            <ul className="list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-text-primary marker:text-signal">
+              {odigoOperatorWorkflows.map((workflow) => <li key={workflow}>{workflow}</li>)}
+            </ul>
+          </CaseStudySection>
+          <CaseStudySection title="Performance">
+            <OdigoPerformance />
+          </CaseStudySection>
           <CaseStudySection title="Live deployments">
+            <p className="mb-5 text-sm text-text-secondary">{odigoScaleSummary}</p>
             <DeploymentList regions={odigoDeployments} />
           </CaseStudySection>
         </>

@@ -118,7 +118,7 @@ export function Contact() {
             {/* Left: channels */}
             <div className="flex flex-col border-b border-border p-6 sm:p-8 lg:border-r lg:border-b-0">
               <p className="font-mono text-[11px] leading-relaxed tracking-[0.08em] text-signal">
-                {personal.availability}
+                {personal.title}
               </p>
 
               <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-text-primary sm:text-2xl">

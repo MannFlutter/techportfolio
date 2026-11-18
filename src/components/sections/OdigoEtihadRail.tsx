@@ -3,39 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
+import { Badge } from "@/components/ui/Badge";
+import { rosIntegration } from "@/lib/data/deployments";
+import { getProjectBySlug } from "@/lib/data/projects";
 import { MapPinIcon } from "@/components/ui/icons";
 
 const HIGHLIGHTS = [
-  "ROS integration (ROS 2 migration in progress)",
+  rosIntegration,
   "WebSockets, Serial/UART, WebRTC",
   "Voice assistant with indoor map-based route guidance",
   "Live telemetry and robot-operator interfaces",
   "Secure, low-latency communication for production deployment",
-] as const;
-
-const FEATURES = [
-  "ROS integration (ROS 2 migration planned)",
-  "Flutter–ROS bridge for real-time robot communication",
-  "Voice assistant with wake-on-tap interaction (\"How may I help you?\")",
-  "Indoor map rendering with live route-from-current-position navigation",
-  "Cruise-mode ambient display (images/video loop) with seamless transition to assistant mode",
-  "Multi-language voice and UI support",
-  "Live telemetry and robot-operator interfaces",
-  "WebSockets, Serial/UART, WebRTC",
-  "Secure, low-latency communication for production",
-] as const;
-
-const TECH_STACK = [
-  { label: "Flutter", upcoming: false },
-  { label: "Java", upcoming: false },
-  { label: "ROS", upcoming: false },
-  { label: "ROS 2 (upcoming)", upcoming: true },
-  { label: "WebSockets", upcoming: false },
-  { label: "Serial/UART", upcoming: false },
-  { label: "WebRTC", upcoming: false },
-  { label: "Real-time Communication", upcoming: false },
-  { label: "Indoor mapping / wayfinding engine", upcoming: false },
-  { label: "Voice/NLU (multilingual)", upcoming: false },
 ] as const;
 
 type Reading = {
@@ -161,6 +139,9 @@ function OperatorView() {
  * voice assistant, indoor navigation, and robot platform.
  */
 export function OdigoEtihadRail() {
+  const project = getProjectBySlug("odigo-etihad-rail");
+  if (!project) return null;
+
   return (
     <section
       id="odigo-etihad"
@@ -236,13 +217,7 @@ export function OdigoEtihadRail() {
         <div className="mt-20 max-w-[70ch] border-t border-border/70 pt-12">
           <SectionHeading>Overview</SectionHeading>
           <p className="mt-5 text-base leading-relaxed text-text-secondary">
-            Cross-platform application suite for a ROS-based guidance robot
-            deployed at Etihad Rail&apos;s Fujairah station. Built Flutter and
-            Android interfaces with real-time robot communication, a
-            multilingual voice assistant, live indoor navigation, and secure
-            low-latency control — running in a live public infrastructure
-            deployment, not a demo. Currently built on ROS, with ROS 2
-            integration underway.
+            {project.fullDescription}
           </p>
         </div>
 
@@ -266,25 +241,15 @@ export function OdigoEtihadRail() {
         {/* Features */}
         <div className="mt-14 max-w-[70ch]">
           <SectionHeading>Features</SectionHeading>
-          <BulletList items={FEATURES} />
+          <BulletList items={project.features} />
         </div>
 
         {/* Tech stack */}
         <div className="mt-14">
           <SectionHeading>Tech stack</SectionHeading>
           <ul className="mt-5 flex flex-wrap gap-2">
-            {TECH_STACK.map((item) => (
-              <li key={item.label}>
-                <span
-                  className={
-                    item.upcoming
-                      ? "inline-flex items-center rounded-md border border-dashed border-signal/40 bg-transparent px-2.5 py-1 font-mono text-[11px] tracking-wide text-signal/80"
-                      : "inline-flex items-center rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-[11px] tracking-wide text-text-secondary transition-colors duration-200 ease-signature hover:border-signal/35 hover:text-text-primary"
-                  }
-                >
-                  {item.label}
-                </span>
-              </li>
+            {project.tech.map((item) => (
+              <li key={item}><Badge>{item}</Badge></li>
             ))}
           </ul>
         </div>

@@ -1,3 +1,25 @@
+export const odigoDeploymentScale = {
+  robots: "100+",
+  // TODO(manthan): Update the site count once the probable duplicates below are verified.
+  sites: "45+",
+  regions: "India and the UAE",
+} as const;
+
+export const odigoScaleSummary = `${odigoDeploymentScale.robots} robots across ${odigoDeploymentScale.sites} sites in ${odigoDeploymentScale.regions}`;
+export const rosProductionStatus = "ROS in production; ROS 2 migration in progress";
+export const rosIntegration = "ROS integration (ROS 2 migration in progress)";
+
+export const odigoPerformance = [
+  { label: "Round-trip latency", value: "~24 ms" },
+  { label: "Jitter", value: "<2 ms" },
+  { label: "Telemetry rate", value: "10 Hz" },
+] as const;
+
+// TODO(manthan): Confirm the network type used for the operator-app-to-robot latency measurement.
+// TODO(manthan): Confirm the sample size used to average the latency measurement.
+export const odigoMeasurementNote =
+  "Measured operator-app-to-robot round trip at 10Hz telemetry. Network type and sample size are pending confirmation.";
+
 export type DeploymentRegion = {
   region: string;
   sites: string[];
@@ -28,6 +50,7 @@ export const odigoDeployments: DeploymentRegion[] = [
       "LuLu Mall (Thiruvananthapuram)",
       "Lulu Mall (Lucknow)",
       "The Capital Mall (Mumbai)",
+      // TODO(manthan): Identify the specific Pacific Mall (New Delhi) and dedupe against the named Pacific locations.
       "Pacific Mall (New Delhi)",
       "Crown Mall (Lucknow)",
       "R City Mall (Mumbai)",
@@ -37,7 +60,7 @@ export const odigoDeployments: DeploymentRegion[] = [
     ],
   },
   {
-    region: "Dubai",
+    region: "UAE",
     sites: [
       "Lulu Al Dhafra Mall (Abu Dhabi)",
       "Lulu Mazyad Mall (Abu Dhabi)",
@@ -45,19 +68,22 @@ export const odigoDeployments: DeploymentRegion[] = [
       "Lulu Madinat Zayed (Abu Dhabi)",
       "Lulu Khalidiyah Mall (Abu Dhabi)",
       "Lulu Baniyas (Abu Dhabi)",
-      "Lulu Al Falah (Abu Dhabi)",
+      "Lulu Al Falah",
       "Lulu WTC (Abu Dhabi)",
       "Lulu Mushrif Mall (Abu Dhabi)",
       "Lulu Al Wahda Mall (Abu Dhabi)",
       "Lulu Al Nadha (Dubai)",
       "Lulu Arabian Center (Dubai)",
       "Lulu Village (Dubai)",
-      "Lulu Capital Mall (Dubai)",
-      "Lulu Forsan Mall (Dubai)",
+      // TODO(manthan): Verify the emirate for Lulu Capital Mall, Lulu Forsan Mall, and Lulu Al Falah.
+      "Lulu Capital Mall",
+      "Lulu Forsan Mall",
+      // TODO(manthan): Verify whether Silicon Central Mall and Lulu Silicon Central refer to one site, then dedupe.
       "Silicon Central Mall (Dubai)",
       "Lulu Silicon Central (Dubai)",
       "Lulu Motor City (Dubai)",
       "Lulu Festival City (Dubai)",
+      // TODO(manthan): Verify whether Lulu Outlet Mall and Outlet Mall Carpet Area refer to one site, then dedupe.
       "Lulu Outlet Mall (Dubai)",
       "Outlet Mall Carpet Area (Dubai)",
       "Lulu Al Barsha Mid (Dubai)",
@@ -71,7 +97,7 @@ export const odigoDeployments: DeploymentRegion[] = [
 ];
 
 export const odigoCapabilities = [
-  "ROS and ROS 2 integration",
+  rosIntegration,
   "WebSockets, Serial/UART, WebRTC",
   "Live telemetry and robot-operator interfaces",
   "Secure, low-latency communication for production deployment",

@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { withBasePath } from "@/lib/basePath";
+import { odigoScaleSummary } from "@/lib/data/deployments";
 import { personal } from "@/lib/data/personal";
 import "./globals.css";
 
@@ -31,6 +32,9 @@ const jetbrains = JetBrains_Mono({
 /** Public production URL (GitHub Pages project site). */
 const siteUrl = "https://mannflutter.github.io/techportfolio";
 
+const description = `${personal.title} building Flutter robot operator interfaces and real-time systems for Odigo, with ${odigoScaleSummary}.`;
+const socialImageUrl = `${siteUrl}/og-image.png`;
+
 export const viewport: Viewport = {
   themeColor: "#0a0a0b",
   colorScheme: "dark",
@@ -39,14 +43,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(`${siteUrl}/`),
   title: {
-    default: "Manthan Patel — Senior Mobile & ROS Engineer",
+    default: personal.title,
     template: "%s · Manthan Patel",
   },
-  description:
-    "Senior Mobile & ROS Engineer building production robotics, real-time, and enterprise systems in Flutter — including the Odigo advertising-robot platform, live in India and Dubai.",
+  description,
   keywords: [
     "Flutter",
-    "Senior Mobile & ROS Engineer",
+    personal.title,
     "ROS",
     "ROS 2",
     "Robotics",
@@ -97,25 +100,23 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteUrl,
     siteName: "Manthan Patel",
-    title: "Manthan Patel — Senior Mobile & ROS Engineer",
-    description:
-      "Robotics, real-time systems, and enterprise Flutter — including the Odigo advertising-robot platform live in India and Dubai.",
+    title: personal.title,
+    description,
     images: [
       {
-        url: "/og-image.png",
+        url: socialImageUrl,
         width: 1200,
         height: 630,
-        alt: "Manthan Patel — Senior Mobile & ROS Engineer",
+        alt: `${personal.name} — ${personal.title}`,
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manthan Patel — Senior Mobile & ROS Engineer",
-    description:
-      "Robotics, real-time systems, and enterprise Flutter — including the Odigo advertising-robot platform.",
-    images: ["/og-image.png"],
+    title: personal.title,
+    description,
+    images: [socialImageUrl],
   },
   robots: {
     index: true,
@@ -135,7 +136,7 @@ const personSchema = {
   description: personal.heroSubhead,
   email: `mailto:${personal.email}`,
   url: siteUrl,
-  image: `${siteUrl}/og-image.png`,
+  image: socialImageUrl,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Ahmedabad",

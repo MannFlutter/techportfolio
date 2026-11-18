@@ -64,7 +64,7 @@ export function Hero() {
             variants={variants}
             className="mt-3 font-display text-3xl leading-[1.15] font-medium tracking-tight text-balance text-text-primary sm:text-4xl lg:text-5xl"
           >
-            {personal.heroHeadline}
+            {personal.title}
           </motion.h1>
 
           <motion.p

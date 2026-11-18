@@ -1,3 +1,5 @@
+import { odigoDeploymentScale, rosIntegration } from "./deployments";
+
 export type ExperienceEntry = {
   company: string;
   role: string;
@@ -10,37 +12,21 @@ export type ExperienceEntry = {
   tech?: string[];
 };
 
-/**
- * Source of truth: personal_info.dart (Saubhagyam Aug 2020–Jan 2022,
- * Kody Jan 2022–Present). Ordered oldest first.
- * Spice domain specifics stay unstated until confirmed.
- */
 export const experience: ExperienceEntry[] = [
   {
-    company: "Saubhagyam Web Pvt. Ltd.",
-    role: "Flutter Developer",
-    period: "Aug 2020 – Jan 2022",
-    durationLabel: "~1.5 years",
-    startLabel: "Aug 2020",
-    endLabel: "Jan 2022",
-    summary:
-      "Cross-platform Flutter development across the full product lifecycle — MVP to release — for B2B and B2C products spanning robotics, fintech, and e-learning.",
-    highlights: [],
-    tech: ["Flutter", "Dart", "Firebase", "REST APIs"],
-  },
-  {
     company: "Kody Technolab Limited",
-    role: "Flutter Developer",
+    role: "Senior Flutter & Real-Time Systems Lead",
     period: "Jan 2022 – Present",
-    durationLabel: "~4.5 years",
+    durationLabel: "~4.9 years",
     startLabel: "Jan 2022",
     endLabel: "Present",
     summary:
       "Flutter development across educational, communication, and real-time data-driven products — architecture through App Store deployment.",
     highlights: [
-      "Designed, architected, and shipped high-performance Flutter applications serving enterprise, fintech, communication, education, and robotics domains.",
+      "Designed and shipped 15+ Flutter apps across enterprise, fintech, communication, education, and robotics.",
+      "Improved rendering performance by approximately 30% and delivered 10+ production releases.",
       "Drove end-to-end engineering ownership, translating product requirements into scalable mobile architectures and reliable production releases.",
-      "Developed the mobile applications for the Odigo robotics platform, integrating ROS, real-time communication protocols, and hardware interfaces to support live commercial deployments.",
+      `Developed mobile applications for Odigo, with ${rosIntegration} and real-time communication with robot hardware. Measured approximately 24 ms operator-app-to-robot round-trip latency with under 2 ms jitter at 10 Hz.`,
       "Managed a team of three engineers, establishing engineering best practices through code reviews, sprint planning, mentoring, and collaborative delivery.",
     ],
     tech: [
@@ -53,11 +39,23 @@ export const experience: ExperienceEntry[] = [
       "Riverpod",
     ],
   },
+  {
+    company: "Saubhagyam Web Pvt. Ltd.",
+    role: "Flutter Software Engineer",
+    period: "Aug 2020 – Jan 2022",
+    durationLabel: "~1.5 years",
+    startLabel: "Aug 2020",
+    endLabel: "Jan 2022",
+    summary:
+      "Cross-platform Flutter development across the full product lifecycle — MVP to release — for B2B and B2C products spanning robotics, fintech, and e-learning.",
+    highlights: ["Delivered 10+ apps from MVP development through release."],
+    tech: ["Flutter", "Dart", "Firebase", "REST APIs"],
+  },
 ];
 
 export const experienceTotals = {
-  yearsLabel: "5+ years",
+  yearsLabel: "6+ years",
   shippedAppsLabel: "25+",
-  robotDeploymentsLabel: "100+",
+  robotDeploymentsLabel: odigoDeploymentScale.robots,
   countriesLabel: "2",
 } as const;

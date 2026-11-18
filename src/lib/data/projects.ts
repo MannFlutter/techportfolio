@@ -1,4 +1,5 @@
 import { withBasePath } from "@/lib/basePath";
+import { odigoScaleSummary, rosIntegration, rosProductionStatus } from "./deployments";
 
 export type Project = {
   slug: string;
@@ -34,6 +35,16 @@ function numberedShots(folder: string, count: number): string[] {
   );
 }
 
+export const odigoOperatorWorkflows = [
+  "Robot movement and navigation control",
+  "Emergency-stop handling",
+  "Charging control and status",
+  "Live robot monitoring",
+  "Offline-resilient data synchronization",
+] as const;
+
+export const threeDProjectSlug = "3d-avatars-vehicle-models";
+
 /**
  * Reconciled from Manthan_Portfolio/lib/ui/data/projects.dart + prompt Section 5.
  * Live dart wins on copy/store links. Public site references Odigo only.
@@ -48,20 +59,19 @@ export const projects: Project[] = [
     shortDescription:
       "Flutter & Android apps powering a production advertising-robot platform",
     fullDescription:
-      "Cross-platform application suite for ROS-based advertising robots deployed in commercial malls. Built Flutter and Android operator interfaces with real-time robot communication, live telemetry, and secure low-latency control — running in production across India and Dubai, not demos.",
+      `Built Flutter and Android operator interfaces for autonomous advertising robots, with real-time communication, live telemetry, and low-latency control. The platform has ${odigoScaleSummary}. ${rosProductionStatus}.`,
     category: "Robotics",
     tech: [
       "Flutter",
       "Java",
       "ROS",
-      "ROS 2",
       "WebSockets",
       "Serial/UART",
       "WebRTC",
       "Real-time Communication",
     ],
     features: [
-      "ROS and ROS 2 integration",
+      rosIntegration,
       "Flutter–ROS bridge for real-time robot communication",
       "Live telemetry and robot-operator interfaces",
       "WebSockets, Serial/UART, WebRTC",
@@ -70,7 +80,7 @@ export const projects: Project[] = [
       "Multi-module deployment and version compatibility",
     ],
     responsibilities:
-      "Developed Flutter and Android applications for the Odigo platform, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), improved performance and stability across versions, and supported live mall deployments in India and Dubai.",
+      "Developed Flutter and Android applications for the Odigo platform, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), improved performance and stability across versions, and supported live mall deployments in India and the UAE.",
     screenshots: [],
     flagship: true,
     order: 1,
@@ -81,13 +91,12 @@ export const projects: Project[] = [
     shortDescription:
       "Voice assistant, indoor navigation & robot platform at Etihad Rail Fujairah",
     fullDescription:
-      "Cross-platform application suite for a ROS-based guidance robot deployed at Etihad Rail's Fujairah station. Built Flutter and Android interfaces with real-time robot communication, a multilingual voice assistant, live indoor navigation, and secure low-latency control — running in a live public infrastructure deployment, not a demo. Currently built on ROS, with ROS 2 integration underway.",
+      `Built Flutter and Android interfaces for the guidance robot at Etihad Rail’s Fujairah station, with real-time communication, a multilingual voice assistant, and indoor route guidance. ${rosProductionStatus}.`,
     category: "Robotics",
     tech: [
       "Flutter",
       "Java",
       "ROS",
-      "ROS 2 (upcoming)",
       "WebSockets",
       "Serial/UART",
       "WebRTC",
@@ -96,7 +105,7 @@ export const projects: Project[] = [
       "Voice/NLU (multilingual)",
     ],
     features: [
-      "ROS integration (ROS 2 migration planned)",
+      rosIntegration,
       "Flutter–ROS bridge for real-time robot communication",
       "Voice assistant with wake-on-tap interaction (\"How may I help you?\")",
       "Indoor map rendering with live route-from-current-position navigation",
@@ -737,6 +746,20 @@ export const projects: Project[] = [
     screenshots: [],
     draft: true,
     order: 101,
+  },
+  {
+    slug: threeDProjectSlug,
+    title: "3D Avatars & Vehicle Models",
+    // TODO(manthan): Confirm the client or product these models were delivered for.
+    shortDescription: "Human-character 3D avatars and car models.",
+    fullDescription: "Human-character 3D avatars and car models.",
+    category: "3D & Visualization",
+    // TODO(manthan): Add tags for the confirmed 3D tools.
+    tech: [],
+    features: [],
+    // TODO(manthan): Add approved screenshots or an animated WebP turntable to /public/screenshots/3d/.
+    screenshots: [],
+    order: 19,
   },
 ];
 

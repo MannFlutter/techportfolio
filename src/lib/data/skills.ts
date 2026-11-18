@@ -1,17 +1,36 @@
+import { rosIntegration } from "./deployments";
+
 export type SkillCategory = {
   title: string;
   skills: string[];
 };
 
-/**
- * Merged from technical_skills.dart + personal_info.dart `skills`, deduped.
- * Robotics protocols live in the Robotics section, not here.
- * Categorized lists only — no percentage bars or charts.
- */
 export const technicalSkills: SkillCategory[] = [
+  {
+    title: "Robotics & Real-Time",
+    skills: [
+      rosIntegration,
+      "WebSockets and WebRTC",
+      "Serial/UART",
+      "Low-latency telemetry",
+      "OCPP",
+      "Sensor and IoT pipelines",
+      // TODO(manthan): Confirm which additional skills apply: C/C++, Python, Linux, Nav2, computer vision, and AMR/AGV.
+    ],
+  },
+  {
+    title: "3D & Visualization",
+    skills: [
+      "3D avatar creation (human characters)",
+      "3D vehicle (car) modelling",
+      // TODO(manthan): Confirm the 3D tools used, such as Blender, Unity, or Three.js.
+      // TODO(manthan): Confirm whether the 3D work ran in real time in Flutter or on mobile.
+    ],
+  },
   {
     title: "Flutter Development",
     skills: [
+      "Native Android (Java) and iOS",
       "Advanced UI design (responsive/adaptive screens)",
       "In-App Purchases, Stripe & Razorpay integration",
       "Audio/video streaming",
@@ -69,5 +88,6 @@ export const engineeringExpertise = [
   "Profiling & render optimization",
   "Concurrent communication",
   "Production reliability",
-  "ROS integration",
+  "Test-driven development (TDD)",
+  "Agile/Scrum leadership",
 ] as const;

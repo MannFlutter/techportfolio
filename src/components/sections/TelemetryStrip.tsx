@@ -81,11 +81,11 @@ export function TelemetryStrip() {
     <figure className="overflow-hidden rounded-xl border border-signal/20 bg-[#0c0c0e] shadow-[0_0_0_1px_rgba(74,222,128,0.04),0_24px_60px_-32px_rgba(0,0,0,0.9)]">
       <div className="flex items-center justify-between border-b border-signal/15 bg-signal/[0.04] px-4 py-2.5">
         <p className="font-mono text-[10px] tracking-[0.16em] text-text-secondary uppercase">
-          Operator view
+          Illustrative operator view
         </p>
         <p className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] text-signal uppercase">
           <SignalPulse />
-          ROS 2 link
+          ROS link
         </p>
       </div>
 

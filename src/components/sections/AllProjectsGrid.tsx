@@ -8,12 +8,14 @@ import {
   reducedMotionVariants,
   staggerContainer,
 } from "@/lib/animations/motionVariants";
-import { getGridProjects, hasProjectDetail } from "@/lib/data/projects";
+import { getGridProjects, hasProjectDetail, threeDProjectSlug } from "@/lib/data/projects";
 import { useHasMounted } from "@/lib/hooks/useHasMounted";
 import { Badge } from "@/components/ui/Badge";
 import { RevealText } from "@/components/ui/RevealText";
+import { ScreenshotShowcase } from "@/components/work/ScreenshotShowcase";
+import { cn } from "@/lib/utils";
 
-export function AllProjectsGrid() {
+export function AllProjectsGrid({ threeDScreenshots }: { threeDScreenshots: string[] }) {
   const projects = getGridProjects();
   const reduceMotion = useReducedMotion();
   const mounted = useHasMounted();
@@ -52,74 +54,92 @@ export function AllProjectsGrid() {
           variants={container}
           className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {projects.map((project) => (
-            <motion.li
-              key={project.slug}
-              variants={variants}
-              className="flex flex-col rounded-lg border border-border bg-surface p-5 transition-[border-color,transform] duration-200 ease-signature hover:-translate-y-0.5 hover:border-signal/35"
-            >
-              <p className="font-mono text-[11px] tracking-[0.12em] text-text-secondary uppercase">
-                {project.category}
-              </p>
-              <h3 className="mt-2.5 font-display text-lg font-medium tracking-tight text-text-primary">
+          {projects.map((project) => {
+            const showGallery = project.slug === threeDProjectSlug && threeDScreenshots.length > 0;
+
+            return (
+              <motion.li
+                key={project.slug}
+                variants={variants}
+                className={cn(
+                  "flex flex-col rounded-lg border border-border bg-surface p-5 transition-[border-color,transform] duration-200 ease-signature hover:-translate-y-0.5 hover:border-signal/35",
+                  showGallery && "col-span-full",
+                )}
+              >
+                <p className="font-mono text-[11px] tracking-[0.12em] text-text-secondary uppercase">
+                  {project.category}
+                </p>
+                <h3 className="mt-2.5 font-display text-lg font-medium tracking-tight text-text-primary">
+                  {hasProjectDetail(project) ? (
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="transition-colors duration-200 ease-signature hover:text-signal"
+                    >
+                      {project.title}
+                    </Link>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
+                <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-text-secondary">
+                  {project.shortDescription}
+                </p>
+                {project.tech.length > 0 ? (
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {project.tech.slice(0, 3).map((tag) => (
+                      <li key={tag}>
+                        <Badge>{tag}</Badge>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {showGallery ? (
+                  <div className="mt-5">
+                    <ScreenshotShowcase
+                      screenshots={threeDScreenshots}
+                      projectTitle={project.title}
+                      landscape
+                    />
+                  </div>
+                ) : null}
                 {hasProjectDetail(project) ? (
                   <Link
                     href={`/work/${project.slug}`}
-                    className="transition-colors duration-200 ease-signature hover:text-signal"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-signal transition-opacity duration-200 ease-signature hover:opacity-80"
                   >
-                    {project.title}
+                    View project
+                    <span aria-hidden>→</span>
                   </Link>
-                ) : (
-                  project.title
+                ) : null}
+                {(project.android || project.ios) && (
+                  <div className="mt-5 flex flex-wrap gap-3 border-t border-border pt-4">
+                    {project.android ? (
+                      <a
+                        href={project.android}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
+                      >
+                        Play Store
+                        <ExternalLinkIcon className="size-3" />
+                      </a>
+                    ) : null}
+                    {project.ios ? (
+                      <a
+                        href={project.ios}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
+                      >
+                        App Store
+                        <ExternalLinkIcon className="size-3" />
+                      </a>
+                    ) : null}
+                  </div>
                 )}
-              </h3>
-              <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-text-secondary">
-                {project.shortDescription}
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
-                {project.tech.slice(0, 3).map((tag) => (
-                  <li key={tag}>
-                    <Badge>{tag}</Badge>
-                  </li>
-                ))}
-              </ul>
-              {hasProjectDetail(project) ? (
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-signal transition-opacity duration-200 ease-signature hover:opacity-80"
-                >
-                  View project
-                  <span aria-hidden>→</span>
-                </Link>
-              ) : null}
-              {(project.android || project.ios) && (
-                <div className="mt-5 flex flex-wrap gap-3 border-t border-border pt-4">
-                  {project.android ? (
-                    <a
-                      href={project.android}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
-                    >
-                      Play Store
-                      <ExternalLinkIcon className="size-3" />
-                    </a>
-                  ) : null}
-                  {project.ios ? (
-                    <a
-                      href={project.ios}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
-                    >
-                      App Store
-                      <ExternalLinkIcon className="size-3" />
-                    </a>
-                  ) : null}
-                </div>
-              )}
-            </motion.li>
-          ))}
+              </motion.li>
+            );
+          })}
         </motion.ul>
       </div>
     </section>
