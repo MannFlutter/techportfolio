@@ -4,8 +4,9 @@ export type DeploymentRegion = {
 };
 
 /**
- * Live Odigo advertising-robot deployments (India + Dubai).
- * India sites reconciled from Odigo-V3 destination list (name + city only).
+ * Live Odigo advertising-robot deployments (India + UAE).
+ * Sites reconciled from Odigo-V3 destination lists (name + city only;
+ * internal FTR offices and inactive destinations omitted).
  */
 export const odigoDeployments: DeploymentRegion[] = [
   {
@@ -37,7 +38,35 @@ export const odigoDeployments: DeploymentRegion[] = [
   },
   {
     region: "Dubai",
-    sites: ["BurJuman", "Additional commercial sites"],
+    sites: [
+      "Lulu Al Dhafra Mall (Abu Dhabi)",
+      "Lulu Mazyad Mall (Abu Dhabi)",
+      "Lulu Y Tower (Abu Dhabi)",
+      "Lulu Madinat Zayed (Abu Dhabi)",
+      "Lulu Khalidiyah Mall (Abu Dhabi)",
+      "Lulu Baniyas (Abu Dhabi)",
+      "Lulu Al Falah (Abu Dhabi)",
+      "Lulu WTC (Abu Dhabi)",
+      "Lulu Mushrif Mall (Abu Dhabi)",
+      "Lulu Al Wahda Mall (Abu Dhabi)",
+      "Lulu Al Nadha (Dubai)",
+      "Lulu Arabian Center (Dubai)",
+      "Lulu Village (Dubai)",
+      "Lulu Capital Mall (Dubai)",
+      "Lulu Forsan Mall (Dubai)",
+      "Silicon Central Mall (Dubai)",
+      "Lulu Silicon Central (Dubai)",
+      "Lulu Motor City (Dubai)",
+      "Lulu Festival City (Dubai)",
+      "Lulu Outlet Mall (Dubai)",
+      "Outlet Mall Carpet Area (Dubai)",
+      "Lulu Al Barsha Mid (Dubai)",
+      "Lulu Al Qusais (Dubai)",
+      "Lulu Dubai Mall (Dubai)",
+      "Lulu Warsan (Dubai)",
+      "Lulu Festival Plaza (Dubai)",
+      "Burjuman Mall (Bur Dubai)",
+    ],
   },
 ];
 
