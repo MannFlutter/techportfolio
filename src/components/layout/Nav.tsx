@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLenisScroll } from "@/components/layout/SmoothScrollProvider";
 import { MenuIcon, XIcon } from "@/components/ui/icons";
+import { withBasePath } from "@/lib/basePath";
 import { personal } from "@/lib/data/personal";
 import { cn } from "@/lib/utils";
 
@@ -47,6 +48,7 @@ export function Nav() {
   const [activeHash, setActiveHash] = useState("");
   const pinnedHash = useRef<string | null>(null);
   const pathname = usePathname();
+  const homeActiveHash = pathname === "/" ? activeHash : "";
   const { scrollTo } = useLenisScroll();
 
   useEffect(() => {
@@ -100,6 +102,8 @@ export function Nav() {
     event: React.MouseEvent<HTMLAnchorElement>,
     hash: string,
   ) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    setOpen(false);
     if (pathname !== "/") return;
     event.preventDefault();
     pinnedHash.current = hash;
@@ -115,7 +119,6 @@ export function Nav() {
       },
     });
     history.replaceState(null, "", hash);
-    setOpen(false);
   };
 
   return (
@@ -151,12 +154,12 @@ export function Nav() {
           {links.map((link) => (
             <li key={link.hash}>
               <a
-                href={link.hash}
+                href={withBasePath(`/${link.hash}`)}
                 onClick={(e) => onNavClick(e, link.hash)}
-                aria-current={activeHash === link.hash ? "location" : undefined}
+                aria-current={homeActiveHash === link.hash ? "location" : undefined}
                 className={cn(
                   "rounded-md px-2.5 py-1.5 text-sm transition-colors duration-200 ease-signature",
-                  activeHash === link.hash
+                  homeActiveHash === link.hash
                     ? "bg-signal-muted text-signal"
                     : "text-text-secondary hover:text-text-primary",
                 )}
@@ -199,11 +202,11 @@ export function Nav() {
           {links.map((link) => (
             <li key={link.hash}>
               <a
-                href={link.hash}
-                aria-current={activeHash === link.hash ? "location" : undefined}
+                href={withBasePath(`/${link.hash}`)}
+                aria-current={homeActiveHash === link.hash ? "location" : undefined}
                 className={cn(
                   "block rounded-md px-2 py-2.5 text-sm transition-colors duration-200 ease-signature",
-                  activeHash === link.hash
+                  homeActiveHash === link.hash
                     ? "bg-signal-muted text-signal"
                     : "text-text-secondary hover:bg-surface hover:text-text-primary",
                 )}
