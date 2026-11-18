@@ -49,14 +49,11 @@ export const technicalSkills: SkillCategory[] = [
   },
   {
     title: "Payment Gateway",
-    skills: ["Payment gateway integration with PayU, PayPal, Stripe, Razorpay, Flutterwave, and Paystack"],
+    skills: ["PayU", "PayPal", "Stripe", "Razorpay", "Flutterwave", "Paystack"],
   },
   {
     title: "Video & Voice Call",
-    skills: [
-      "Agora and Twilio video calling on Android and iOS",
-      "Telnyx and ZegoCloud calling SDKs",
-    ],
+    skills: ["Agora", "Twilio", "Telnyx", "ZegoCloud"],
   },
   {
     title: "State Management",
