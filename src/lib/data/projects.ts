@@ -156,7 +156,7 @@ export const projects: Project[] = [
       "On-device results, PDF reports, and WhatsApp delivery",
       "Offline storage with sync to the clinic service",
       "Ads, intro video, and an operator settings panel",
-      "Voice assistant with a 3D doctor that can recommend a checkup",
+      "Ask me overlay with an animated 3D doctor that listens, speaks, and can suggest a checkup",
       "Telemedicine video calls",
     ],
     responsibilities:
@@ -750,13 +750,16 @@ export const projects: Project[] = [
   {
     slug: threeDProjectSlug,
     title: "3D Avatars & Vehicle Models",
-    // TODO(manthan): Confirm the client or product these models were delivered for.
-    shortDescription: "Human-character 3D avatars and car models.",
-    fullDescription: "Human-character 3D avatars and car models.",
+    shortDescription: "Human-character 3D avatars and car models, including the patient-facing 3D doctor for Sccore Diagnostic Hub.",
+    fullDescription: "The 3D doctor replaced the particle orb on Sccore Diagnostic Hub’s device-selection Ask me overlay. The standing character uses the existing GLB model in a Three.js scene inside an Android WebView. Flutter manages the assistant session, and the WebView renders the character’s poses, expressions, and mouth movements.",
     category: "3D & Visualization",
-    // TODO(manthan): Add tags for the confirmed 3D tools.
-    tech: [],
-    features: [],
+    tech: ["Flutter", "Three.js", "Android WebView", "glTF / GLB", "Procedural animation"],
+    features: [
+      "A synchronized greeting and wave followed by listening, thinking, and speaking poses",
+      "English and Hindi lip sync using the model’s Oculus visemes",
+      "Live half-body and full-body framing with a saved operator setting",
+    ],
+    // TODO(manthan): Confirm the vehicle model tools and delivery context.
     // TODO(manthan): Add approved screenshots or an animated WebP turntable to /public/screenshots/3d/.
     screenshots: [],
     order: 19,
@@ -780,7 +783,7 @@ export function getGridProjects(): Project[] {
 }
 
 export function hasProjectDetail(project: Project): boolean {
-  return project.flagship === true || project.screenshots.length > 0;
+  return project.flagship === true || project.screenshots.length > 0 || project.slug === threeDProjectSlug;
 }
 
 export const caseStudySlugs = [
@@ -795,6 +798,7 @@ export const caseStudySlugs = [
   "country-kart",
   "takeprofit",
   "medan-tv",
+  threeDProjectSlug,
 ] as const;
 
 export type CaseStudySlug = (typeof caseStudySlugs)[number];

@@ -6,8 +6,9 @@ export const odigoDeploymentScale = {
 } as const;
 
 export const odigoScaleSummary = `${odigoDeploymentScale.robots} robots across ${odigoDeploymentScale.sites} sites in ${odigoDeploymentScale.regions}`;
-export const rosProductionStatus = "ROS in production; ROS 2 migration in progress";
-export const rosIntegration = "ROS integration (ROS 2 migration in progress)";
+export const rosMigrationStatus = "ROS 2 migration in progress";
+export const rosProductionStatus = `ROS in production; ${rosMigrationStatus}`;
+export const rosIntegration = `ROS integration (${rosMigrationStatus})`;
 
 export const odigoPerformance = [
   { label: "Round-trip latency", value: "~24 ms" },

@@ -4,17 +4,18 @@ import { Badge } from "@/components/ui/Badge";
 
 type CaseStudyHeroProps = {
   project: Project;
+  backToAllProjects?: boolean;
 };
 
-export function CaseStudyHero({ project }: CaseStudyHeroProps) {
+export function CaseStudyHero({ project, backToAllProjects = false }: CaseStudyHeroProps) {
   return (
     <header className="border-b border-border">
       <div className="mx-auto max-w-6xl px-5 pt-28 pb-14 sm:px-8 sm:pt-32 sm:pb-16">
         <Link
-          href="/#work"
+          href={backToAllProjects ? "/#projects" : "/#work"}
           className="inline-flex items-center gap-2 font-mono text-xs tracking-wide text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
         >
-          <span aria-hidden>←</span> Featured work
+          <span aria-hidden>←</span> {backToAllProjects ? "All projects" : "Featured work"}
         </Link>
 
         <p className="mt-8 font-mono text-xs tracking-[0.14em] text-signal uppercase">

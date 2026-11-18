@@ -14,10 +14,12 @@ import {
   getProjectBySlug,
   hasProjectDetail,
   odigoOperatorWorkflows,
+  threeDProjectSlug,
   type CaseStudySlug,
 } from "@/lib/data/projects";
 import { CaseStudyHero } from "@/components/work/CaseStudyHero";
 import { CaseStudySection } from "@/components/work/CaseStudySection";
+import { DoctorAvatarDetails } from "@/components/work/DoctorAvatarDetails";
 import { OdigoPerformance } from "@/components/work/OdigoPerformance";
 import { ScreenshotShowcase } from "@/components/work/ScreenshotShowcase";
 import { DeploymentList } from "@/components/ui/DeploymentList";
@@ -66,10 +68,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const others = getFlagshipProjects().filter((p) => p.slug !== project.slug);
   const isOdigo = project.slug === "odigo";
   const isEtihad = project.slug === "odigo-etihad-rail";
+  const isDoctorAvatar = project.slug === threeDProjectSlug;
 
   return (
     <article className="pb-20">
-      <CaseStudyHero project={project} />
+      <CaseStudyHero project={project} backToAllProjects={isDoctorAvatar} />
 
       <CaseStudySection title="Overview">
         <p className="max-w-[70ch] text-base leading-relaxed text-text-secondary">
@@ -120,6 +123,19 @@ export default async function CaseStudyPage({ params }: PageProps) {
           ))}
         </ul>
       </CaseStudySection>
+
+      {isDoctorAvatar ? <DoctorAvatarDetails /> : null}
+
+      {project.slug === "odigo-clinic" ? (
+        <CaseStudySection title="3D doctor">
+          <p className="max-w-[70ch] leading-relaxed text-text-secondary">
+            The Ask me overlay pairs a procedural Three.js character with the Flutter assistant session.
+          </p>
+          <Link href={`/work/${threeDProjectSlug}`} className="mt-3 inline-block text-sm font-medium text-signal underline underline-offset-4">
+            Read the 3D doctor case study <span aria-hidden="true">→</span>
+          </Link>
+        </CaseStudySection>
+      ) : null}
 
       {isOdigo ? (
         <>

@@ -35,11 +35,11 @@ export function Experience() {
               id="experience-heading"
               className="mt-3 font-display text-2xl font-medium tracking-tight text-text-primary sm:text-3xl"
             >
-              From e-learning MVPs to robots live in malls.
+              From e-learning MVPs to robots in production.
             </RevealText>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-text-secondary">
-            {experienceTotals.yearsLabel} in software engineering across mobile products and production robotics.
+            {experienceTotals.yearsLabel} in software engineering across mobile products and robotics, including deployments in public spaces, malls, hospitals, metro stations, and other venues.
           </p>
         </div>
 

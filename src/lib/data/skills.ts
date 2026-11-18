@@ -23,8 +23,8 @@ export const technicalSkills: SkillCategory[] = [
     skills: [
       "3D avatar creation (human characters)",
       "3D vehicle (car) modelling",
-      // TODO(manthan): Confirm the 3D tools used, such as Blender, Unity, or Three.js.
-      // TODO(manthan): Confirm whether the 3D work ran in real time in Flutter or on mobile.
+      "Real-time character animation in Three.js, integrated with Flutter through Android WebView",
+      // TODO(manthan): Confirm the avatar and vehicle model authoring tools.
     ],
   },
   {

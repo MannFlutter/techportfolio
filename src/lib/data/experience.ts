@@ -1,4 +1,4 @@
-import { odigoDeploymentScale, rosIntegration } from "./deployments";
+import { odigoDeploymentScale, rosIntegration, rosMigrationStatus } from "./deployments";
 
 export type ExperienceEntry = {
   company: string;
@@ -15,7 +15,7 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     company: "Kody Technolab Limited",
-    role: "Senior Flutter & Real-Time Systems Lead",
+    role: "Senior Mobile & Real time system Lead",
     period: "Jan 2022 – Present",
     durationLabel: "~4.9 years",
     startLabel: "Jan 2022",
@@ -34,7 +34,9 @@ export const experience: ExperienceEntry[] = [
       "Dart",
       "Firebase",
       "ROS",
+      rosMigrationStatus,
       "WebSockets",
+      "Socket.IO",
       "WebRTC",
       "Riverpod",
     ],

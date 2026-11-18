@@ -86,9 +86,14 @@ export function Hero() {
                 <dt className="font-mono text-[10px] tracking-[0.12em] text-text-secondary uppercase">
                   {stat.label}
                 </dt>
-                <dd className="mt-1.5 flex items-center gap-2 font-display text-xl font-medium tracking-tight text-text-primary sm:text-2xl">
-                  {stat.value}
-                  {stat.live ? <SignalPulse /> : null}
+                <dd className="mt-1.5">
+                  <span className="flex items-center gap-2 font-display text-xl font-medium tracking-tight text-text-primary sm:text-2xl">
+                    {stat.value}
+                    {stat.live ? <SignalPulse /> : null}
+                  </span>
+                  {stat.detail ? (
+                    <span className="mt-1 block text-xs text-text-secondary">{stat.detail}</span>
+                  ) : null}
                 </dd>
               </div>
             ))}
