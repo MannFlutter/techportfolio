@@ -6,9 +6,7 @@ export const odigoDeploymentScale = {
 } as const;
 
 export const odigoScaleSummary = `${odigoDeploymentScale.robots} robots across ${odigoDeploymentScale.sites} sites in ${odigoDeploymentScale.regions}`;
-export const rosMigrationStatus = "ROS 2 migration in progress";
-export const rosProductionStatus = `ROS in production; ${rosMigrationStatus}`;
-export const rosIntegration = `ROS integration (${rosMigrationStatus})`;
+export const rosIntegration = "ROS 2 integration";
 
 export const odigoPerformance = [
   { label: "Round-trip latency", value: "~24 ms" },
@@ -97,15 +95,17 @@ export const odigoDeployments: DeploymentRegion[] = [
   },
 ];
 
+export const odigoProtocols = "WebSockets, Serial/UART, WebRTC, and Socket.IO";
+
 export const odigoCapabilities = [
   rosIntegration,
-  "WebSockets, Serial/UART, WebRTC",
+  odigoProtocols,
   "Live telemetry and robot-operator interfaces",
   "Secure, low-latency communication for production deployment",
 ] as const;
 
 export const odigoSummary =
-  "Developed the Flutter and Android applications powering the Odigo advertising-robot platform.";
+  "Developed the Flutter and Android applications powering the advertising-robot platform.";
 
 export const odigoEtihadDeployments: DeploymentRegion[] = [
   {
@@ -115,5 +115,5 @@ export const odigoEtihadDeployments: DeploymentRegion[] = [
 ];
 
 export const odigoEtihadSummary =
-  "Developed the Flutter and Android applications powering the Odigo advertising-and-guidance robot deployed at Etihad Rail's Fujairah passenger station — the UAE's first AI robot deployment at a national railway station.";
+  "Developed the Flutter and Android applications powering the advertising and guidance robot deployed at Etihad Rail's Fujairah passenger station — the UAE's first AI robot deployment at a national railway station.";
 

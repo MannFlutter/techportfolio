@@ -10,9 +10,7 @@ import {
 import {
   odigoCapabilities,
   odigoDeployments,
-  odigoDeploymentScale,
   odigoScaleSummary,
-  rosProductionStatus,
   odigoSummary,
 } from "@/lib/data/deployments";
 import { odigoOperatorWorkflows } from "@/lib/data/projects";
@@ -22,12 +20,6 @@ import { DeploymentList } from "@/components/ui/DeploymentList";
 import { RevealText } from "@/components/ui/RevealText";
 import { SignalPulse } from "@/components/ui/SignalPulse";
 import { TelemetryStrip } from "@/components/sections/TelemetryStrip";
-
-const roboticsWork = [
-  { slug: "odigo", name: "Odigo", detail: `Advertising robots across ${odigoDeploymentScale.sites} sites (${odigoDeploymentScale.robots} units).` },
-  { slug: "odigo-etihad-rail", name: "Etihad Rail Fujairah", detail: "Voice assistant and indoor navigation for the UAE’s first AI robot at a national railway station." },
-  { slug: "odigo-clinic", name: "Sccore Diagnostic Hub", detail: "Clinic kiosk on a diagnostic robot." },
-];
 
 export function RoboticsShowcase() {
   const reduceMotion = useReducedMotion();
@@ -67,10 +59,10 @@ export function RoboticsShowcase() {
             id="robotics-heading"
             className="mt-4 font-display text-3xl leading-[1.15] font-medium tracking-tight text-balance text-text-primary sm:text-4xl lg:text-[2.75rem]"
           >
-            Odigo advertising-robot platform
+            Advertising-robot platform
           </RevealText>
           <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-text-secondary sm:text-lg">
-            {odigoSummary} The platform has {odigoScaleSummary}. {rosProductionStatus}.
+            {odigoSummary} The platform has {odigoScaleSummary}.
           </p>
         </div>
 
@@ -122,20 +114,6 @@ export function RoboticsShowcase() {
           </ul>
         </div>
 
-        <div className="mt-12 border-y border-signal/20 py-6">
-          <h3 className="font-display text-lg font-medium">Selected robotics work</h3>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-3">
-            {roboticsWork.map(({ slug, name, detail }) => (
-              <li key={slug} className="border-l border-signal/40 pl-3">
-                <Link href={`/work/${slug}`} className="text-sm font-medium text-signal underline-offset-4 hover:underline">
-                  {name}
-                </Link>
-                <p className="mt-1 text-sm leading-relaxed text-text-secondary">{detail}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <div className="mt-20">
           <p className="font-mono text-xs tracking-[0.14em] text-text-secondary uppercase">
             Live deployments
@@ -150,7 +128,7 @@ export function RoboticsShowcase() {
             href="/work/odigo"
             className="group inline-flex items-center gap-2 border-b border-signal/30 pb-1 text-sm font-medium text-signal transition-[border-color,opacity] duration-200 ease-signature hover:border-signal hover:opacity-90"
           >
-            Read the Odigo case study
+            Read the advertising-robot case study
             <span
               aria-hidden
               className="transition-transform duration-200 ease-signature group-hover:translate-x-0.5"

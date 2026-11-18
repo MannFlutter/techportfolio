@@ -1,4 +1,4 @@
-import { odigoDeploymentScale, rosIntegration, rosMigrationStatus } from "./deployments";
+import { odigoDeploymentScale, rosIntegration } from "./deployments";
 
 export type ExperienceEntry = {
   company: string;
@@ -26,15 +26,14 @@ export const experience: ExperienceEntry[] = [
       "Designed and shipped 15+ Flutter apps across enterprise, fintech, communication, education, and robotics.",
       "Improved rendering performance by approximately 30% and delivered 10+ production releases.",
       "Drove end-to-end engineering ownership, translating product requirements into scalable mobile architectures and reliable production releases.",
-      `Developed mobile applications for Odigo, with ${rosIntegration} and real-time communication with robot hardware. Measured approximately 24 ms operator-app-to-robot round-trip latency with under 2 ms jitter at 10 Hz.`,
+      `Developed mobile applications for the advertising-robot platform, with ${rosIntegration} and real-time communication with robot hardware. Measured approximately 24 ms operator-app-to-robot round-trip latency with under 2 ms jitter at 10 Hz.`,
       "Managed a team of three engineers, establishing engineering best practices through code reviews, sprint planning, mentoring, and collaborative delivery.",
     ],
     tech: [
       "Flutter",
       "Dart",
       "Firebase",
-      "ROS",
-      rosMigrationStatus,
+      rosIntegration,
       "WebSockets",
       "Socket.IO",
       "WebRTC",

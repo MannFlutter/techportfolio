@@ -15,7 +15,8 @@ export const technicalSkills: SkillCategory[] = [
       "Low-latency telemetry",
       "OCPP",
       "Sensor and IoT pipelines",
-      // TODO(manthan): Confirm which additional skills apply: C/C++, Python, Linux, Nav2, computer vision, and AMR/AGV.
+      "Raspberry Pi",
+      // TODO(manthan): Confirm which additional skills apply: C/C++, Python, Linux, Nav2, and AMR/AGV.
     ],
   },
   {
@@ -25,6 +26,16 @@ export const technicalSkills: SkillCategory[] = [
       "3D vehicle (car) modelling",
       "Real-time character animation in Three.js, integrated with Flutter through Android WebView",
       // TODO(manthan): Confirm the avatar and vehicle model authoring tools.
+    ],
+  },
+  {
+    title: "Computer Vision & Voice Assistants",
+    skills: [
+      "TensorFlow Lite model integration for real-time face detection",
+      "Object detection",
+      "Camera-facing faces classified as viewers and partially visible faces as bystanders",
+      "Age and gender estimation model integration",
+      "Multilingual voice assistant integration",
     ],
   },
   {

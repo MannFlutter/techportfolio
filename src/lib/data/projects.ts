@@ -1,5 +1,5 @@
 import { withBasePath } from "@/lib/basePath";
-import { odigoScaleSummary, rosIntegration, rosProductionStatus } from "./deployments";
+import { odigoProtocols, odigoScaleSummary, rosIntegration } from "./deployments";
 
 export type Project = {
   slug: string;
@@ -47,7 +47,7 @@ export const threeDProjectSlug = "3d-avatars-vehicle-models";
 
 /**
  * Reconciled from Manthan_Portfolio/lib/ui/data/projects.dart + prompt Section 5.
- * Live dart wins on copy/store links. Public site references Odigo only.
+ * Live dart wins on copy/store links.
  * Spice is prompt placeholder (not in dart). Screenshot-only folders with no
  * dart entry are skipped until real copy exists.
  */
@@ -55,11 +55,11 @@ export const projects: Project[] = [
   // ── Flagship ──────────────────────────────────────────────
   {
     slug: "odigo",
-    title: "Odigo",
+    title: "Advertising-robot platform",
     shortDescription:
       "Flutter & Android apps powering a production advertising-robot platform",
     fullDescription:
-      `Built Flutter and Android operator interfaces for autonomous advertising robots, with real-time communication, live telemetry, and low-latency control. The platform has ${odigoScaleSummary}. ${rosProductionStatus}.`,
+      `Built Flutter and Android operator interfaces for autonomous advertising robots, with ${rosIntegration}, real-time communication, live telemetry, and low-latency control. The platform has ${odigoScaleSummary}.`,
     category: "Robotics",
     tech: [
       "Flutter",
@@ -68,30 +68,31 @@ export const projects: Project[] = [
       "WebSockets",
       "Serial/UART",
       "WebRTC",
+      "Socket.IO",
       "Real-time Communication",
     ],
     features: [
       rosIntegration,
       "Flutter–ROS bridge for real-time robot communication",
       "Live telemetry and robot-operator interfaces",
-      "WebSockets, Serial/UART, WebRTC",
+      odigoProtocols,
       "Secure, low-latency communication for production",
       "Cross-platform support (Android, iOS, Web, Desktop)",
       "Multi-module deployment and version compatibility",
     ],
     responsibilities:
-      "Developed Flutter and Android applications for the Odigo platform, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), improved performance and stability across versions, and supported live mall deployments in India and the UAE.",
+      "Developed Flutter and Android applications for the advertising-robot platform, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), improved performance and stability across versions, and supported commercial deployments in India and the UAE.",
     screenshots: [],
     flagship: true,
     order: 1,
   },
   {
     slug: "odigo-etihad-rail",
-    title: "Odigo–Etihad Rail",
+    title: "Etihad Rail",
     shortDescription:
       "Voice assistant, indoor navigation & robot platform at Etihad Rail Fujairah",
     fullDescription:
-      `Built Flutter and Android interfaces for the guidance robot at Etihad Rail’s Fujairah station, with real-time communication, a multilingual voice assistant, and indoor route guidance. ${rosProductionStatus}.`,
+      `Built Flutter and Android interfaces for the guidance robot at Etihad Rail’s Fujairah station, with ${rosIntegration}, real-time communication, a multilingual voice assistant, and indoor route guidance.`,
     category: "Robotics",
     tech: [
       "Flutter",
@@ -116,18 +117,18 @@ export const projects: Project[] = [
       "Secure, low-latency communication for production",
     ],
     responsibilities:
-      "Developed the Flutter and Android applications for the Odigo platform at Etihad Rail, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), and built the voice assistant and indoor navigation flow: the robot runs in cruise mode looping ambient images/videos, and on tap switches to an active listening state (\"How may I help you?\"). When a passenger asks something like \"Where is the washroom?\", Odigo resolves the query and renders the full indoor map with a live route drawn from the robot's current position to the destination. Multi-language support included.",
+      "Developed the Flutter and Android applications for the passenger guidance robot at Etihad Rail, contributed to the Flutter–ROS bridge, integrated multi-protocol communication (WebSockets, UART, WebRTC), and built the voice assistant and indoor navigation flow: the robot runs in cruise mode looping ambient images/videos, and on tap switches to an active listening state (\"How may I help you?\"). When a passenger asks something like \"Where is the washroom?\", the assistant resolves the query and renders the full indoor map with a live route drawn from the robot's current position to the destination. Multi-language support included.",
     screenshots: [],
     flagship: true,
     order: 2,
   },
   {
     slug: "odigo-clinic",
-    title: "Sccore Diagnostic Hub",
+    title: "Assistant Robot",
     shortDescription:
       "Android clinic kiosk that runs patient checkups on a diagnostic robot",
     fullDescription:
-      "Sccore Diagnostic Hub is the patient-facing app for the Odigo Clinic robot. Built for a 27-inch Android kiosk, it walks a patient from check-in through the devices assigned to that robot and ends with a report. The flow covers registration, device selection, guided checkups, and results — including vitals, blood and urine kits, heart and lung checks, vision, dental, skin, infection screening, and mental-health questionnaires. Results stay on device and can be synced, exported as PDF, and shared on WhatsApp; an operator panel controls language, ads, the intro video, and the assistant. A 3D doctor on the device-selection screen greets the patient, listens in English and Hindi, and can suggest a checkup. The same app also plays clinic ads and can place a telemedicine video call.",
+      "Sccore Diagnostic Hub is the patient-facing app for the clinic assistant robot. Built for a 27-inch Android kiosk, it walks a patient from check-in through the devices assigned to that robot and ends with a report. The flow covers registration, device selection, guided checkups, and results — including vitals, blood and urine kits, heart and lung checks, vision, dental, skin, infection screening, and mental-health questionnaires. Results stay on device and can be synced, exported as PDF, and shared on WhatsApp; an operator panel controls language, ads, the intro video, and the assistant. A 3D doctor on the device-selection screen greets the patient, listens in English and Hindi, and can suggest a checkup. The same app also plays clinic ads and can place a telemedicine video call.",
     category: "Healthcare",
     tech: [
       "Flutter",

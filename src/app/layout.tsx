@@ -32,7 +32,7 @@ const jetbrains = JetBrains_Mono({
 /** Public production URL (GitHub Pages project site). */
 const siteUrl = "https://mannflutter.github.io/techportfolio";
 
-const description = `${personal.title} building Flutter robot operator interfaces and real-time systems for Odigo, with ${odigoScaleSummary}.`;
+const description = `${personal.title} building Flutter robot operator interfaces and real-time systems. Advertising-robot deployments include ${odigoScaleSummary}.`;
 const socialImageUrl = `${siteUrl}/og-image.png`;
 
 export const viewport: Viewport = {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     "ROS",
     "ROS 2",
     "Robotics",
-    "Odigo",
+    "Advertising robots",
     "Real-time systems",
     "Mobile development",
     "Manthan Patel",

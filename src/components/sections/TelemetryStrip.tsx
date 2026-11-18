@@ -122,8 +122,7 @@ export function TelemetryStrip() {
       </div>
 
       <figcaption className="border-t border-border/70 px-4 py-2.5 font-mono text-[10px] leading-relaxed tracking-wide text-text-secondary">
-        Simulated readout — illustrative of the live telemetry interfaces built
-        for Odigo.
+        Illustrative simulation of the advertising robot’s telemetry interface.
       </figcaption>
     </figure>
   );

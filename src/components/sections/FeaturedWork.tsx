@@ -39,8 +39,7 @@ export function FeaturedWork() {
             Flagship case studies
           </RevealText>
           <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-text-secondary">
-            Deep dives into Odigo, Odigo–Etihad Rail, Satsang, Bonno, and other
-            production systems shipped to store.
+            Case studies in production robotics, passenger guidance, healthcare, and mobile apps.
           </p>
         </div>
 

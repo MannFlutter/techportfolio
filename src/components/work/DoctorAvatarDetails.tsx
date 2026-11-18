@@ -43,7 +43,7 @@ export function DoctorAvatarDetails() {
         </p>
         <p className="mt-3 max-w-[70ch] leading-relaxed text-text-secondary">
           Registration, tests, reports, speech recognition, Gemini speech, and the socket continue to use the existing
-          clinic workflow. <Link href="/work/odigo-clinic" className="text-signal underline underline-offset-4">View Sccore Diagnostic Hub</Link>
+          clinic workflow. <Link href="/work/odigo-clinic" className="text-signal underline underline-offset-4">View the Assistant Robot case study</Link>
         </p>
       </CaseStudySection>
 

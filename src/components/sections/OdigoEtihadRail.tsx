@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
-import { rosIntegration } from "@/lib/data/deployments";
+import { odigoEtihadSummary, rosIntegration } from "@/lib/data/deployments";
 import { getProjectBySlug } from "@/lib/data/projects";
 import { MapPinIcon } from "@/components/ui/icons";
 
@@ -127,15 +127,14 @@ function OperatorView() {
       </div>
 
       <figcaption className="border-t border-border/70 px-4 py-2.5 font-mono text-[10px] leading-relaxed tracking-wide text-text-secondary italic">
-        Simulated readout — illustrative of the live telemetry interfaces built
-        for Odigo.
+        Illustrative simulation of the passenger guidance robot’s telemetry interface.
       </figcaption>
     </figure>
   );
 }
 
 /**
- * Full case-study section for the Odigo–Etihad Rail deployment:
+ * Full case-study section for the Etihad Rail deployment:
  * voice assistant, indoor navigation, and robot platform.
  */
 export function OdigoEtihadRail() {
@@ -172,18 +171,13 @@ export function OdigoEtihadRail() {
             id="odigo-etihad-heading"
             className="mt-4 font-display text-3xl leading-[1.15] font-medium tracking-tight text-balance text-text-primary sm:text-4xl lg:text-[2.75rem]"
           >
-            Odigo–Etihad Rail
+            {project.title}
           </h2>
           <p className="mt-3 font-display text-lg font-medium tracking-tight text-text-secondary sm:text-xl">
             Voice Assistant, Navigation &amp; Robot Platform
           </p>
           <p className="mt-5 max-w-[68ch] text-base leading-relaxed text-text-secondary sm:text-lg">
-            Developed the Flutter and Android applications powering the Odigo
-            advertising-and-guidance robot deployed at Etihad Rail&apos;s
-            Fujairah passenger station — the UAE&apos;s first AI robot
-            deployment at a national railway station. Extended the platform
-            with a conversational voice assistant and real-time indoor
-            wayfinding.
+            {odigoEtihadSummary}
           </p>
         </div>
 
@@ -225,16 +219,7 @@ export function OdigoEtihadRail() {
         <div className="mt-14 max-w-[70ch]">
           <SectionHeading>Contribution</SectionHeading>
           <p className="mt-5 text-base leading-relaxed text-text-secondary">
-            Developed the Flutter and Android applications for the Odigo
-            platform at Etihad Rail, contributed to the Flutter–ROS bridge,
-            integrated multi-protocol communication (WebSockets, UART, WebRTC),
-            and built the voice assistant and indoor navigation flow: the robot
-            runs in cruise mode looping ambient images/videos, and on tap
-            switches to an active listening state (&quot;How may I help
-            you?&quot;). When a passenger asks something like &quot;Where is
-            the washroom?&quot;, Odigo resolves the query and renders the full
-            indoor map with a live route drawn from the robot&apos;s current
-            position to the destination. Multi-language support included.
+            {project.responsibilities}
           </p>
         </div>
 
@@ -270,7 +255,7 @@ export function OdigoEtihadRail() {
             href="/work/odigo-etihad-rail"
             className="group inline-flex items-center gap-2 border-b border-signal/30 pb-1 text-sm font-medium text-signal transition-[border-color,opacity] duration-200 ease-signature hover:border-signal hover:opacity-90"
           >
-            Read the Odigo–Etihad Rail case study
+            Read the Etihad Rail case study
             <span
               aria-hidden
               className="transition-transform duration-200 ease-signature group-hover:translate-x-0.5"

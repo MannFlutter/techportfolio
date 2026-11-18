@@ -31,7 +31,7 @@ export const personal = {
   /** Unprefixed — for absolute metadata URLs resolved against metadataBase. */
   profileImagePath: "/images/profile.jpg",
   heroEyebrow: "Flutter · ROS · Real-Time Systems · Robot Operator Interfaces",
-  heroSubhead: `${experienceTotals.yearsLabel} building production Flutter systems across robotics, enterprise, and fintech, including the Odigo platform with ${odigoScaleSummary}.`,
+  heroSubhead: `${experienceTotals.yearsLabel} building production Flutter systems across robotics, enterprise, and fintech, including an advertising-robot platform with ${odigoScaleSummary}.`,
   aboutHeading: "Software that talks to hardware.",
   about: [
     "I build the software layer where mobile apps meet hardware and real-time systems — ROS-driven robots, connected devices, and low-latency operator interfaces that run in production, not demos.",
