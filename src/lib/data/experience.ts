@@ -1,4 +1,4 @@
-import { odigoDeploymentScale, rosIntegration } from "./deployments";
+import { odigoDeploymentScale } from "./deployments";
 
 export type ExperienceEntry = {
   company: string;
@@ -8,7 +8,7 @@ export type ExperienceEntry = {
   startLabel: string;
   endLabel: string;
   summary: string;
-  highlights: string[];
+  highlights: { label?: string; detail: string }[];
   tech?: string[];
 };
 
@@ -21,13 +21,28 @@ export const experience: ExperienceEntry[] = [
     startLabel: "Jan 2022",
     endLabel: "Present",
     summary:
-      "Flutter development across educational, communication, and real-time data-driven products — architecture through App Store deployment.",
+      "I lead mobile and real-time systems development for production robotics and commercial Flutter applications. My work spans operator interfaces, robot communication, passenger guidance, healthcare kiosks, and mobile application releases.",
     highlights: [
-      "Designed and shipped 15+ Flutter apps across enterprise, fintech, communication, education, and robotics.",
-      "Improved rendering performance by approximately 30% and delivered 10+ production releases.",
-      "Drove end-to-end engineering ownership, translating product requirements into scalable mobile architectures and reliable production releases.",
-      `Developed mobile applications for the advertising-robot platform, with ${rosIntegration} and real-time communication with robot hardware. Measured approximately 24 ms operator-app-to-robot round-trip latency with under 2 ms jitter at 10 Hz.`,
-      "Managed a team of three engineers, establishing engineering best practices through code reviews, sprint planning, mentoring, and collaborative delivery.",
+      {
+        label: "Advertising-robot platform.",
+        detail: `Built Flutter and Android operator applications for a platform deployed across ${odigoDeploymentScale.robots} robots at ${odigoDeploymentScale.sites} sites in ${odigoDeploymentScale.regions}. Developed workflows for movement and navigation control, emergency-stop handling, charging, live monitoring, and offline-resilient synchronization.`,
+      },
+      {
+        label: "Robot communication.",
+        detail: "Contributed to the Flutter–ROS bridge and worked with ROS 1 and ROS 2 in production. Integrated WebSockets, Socket.IO, WebRTC, and Serial/UART for real-time communication between applications and robot hardware.",
+      },
+      {
+        label: "Passenger guidance at Etihad Rail.",
+        detail: "Built a multilingual voice assistant and indoor navigation flow for Fujairah Passenger Station. Passengers could ask for directions and see a route drawn from the robot’s current position to their destination.",
+      },
+      {
+        label: "Healthcare assistant robot.",
+        detail: "Built Android kiosk workflows for patient check-in, guided device checkups, offline synchronization, and reports. Integrated a Three.js doctor avatar through Android WebView with procedural poses and English and Hindi lip sync.",
+      },
+      {
+        label: "Mobile engineering and team leadership.",
+        detail: "Designed and shipped 15+ Flutter applications across robotics, enterprise, fintech, education, and communication. Led three engineers through code reviews, sprint planning, mentoring, and production releases.",
+      },
     ],
     tech: [
       "Flutter",
@@ -58,7 +73,7 @@ export const experience: ExperienceEntry[] = [
     endLabel: "Jan 2022",
     summary:
       "Cross-platform Flutter development across the full product lifecycle — MVP to release — for B2B and B2C products spanning robotics, fintech, and e-learning.",
-    highlights: ["Delivered 10+ apps from MVP development through release."],
+    highlights: [{ detail: "Delivered 10+ apps from MVP development through release." }],
     tech: ["Flutter", "Dart", "Firebase", "REST APIs"],
   },
 ];

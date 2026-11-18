@@ -72,16 +72,19 @@ export function Experience() {
 
                 {role.highlights.length > 0 ? (
                   <ul className="mt-5 space-y-2.5">
-                    {role.highlights.map((item) => (
+                    {role.highlights.map(({ label, detail }) => (
                       <li
-                        key={item}
+                        key={label ?? detail}
                         className="flex gap-3 text-sm leading-relaxed text-text-secondary"
                       >
                         <span
                           aria-hidden
                           className="mt-2 size-1 shrink-0 rounded-full bg-signal"
                         />
-                        <span>{item}</span>
+                        <span>
+                          {label ? <strong className="font-medium text-text-primary">{label} </strong> : null}
+                          {detail}
+                        </span>
                       </li>
                     ))}
                   </ul>
