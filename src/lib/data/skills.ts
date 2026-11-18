@@ -43,8 +43,17 @@ export const technicalSkills: SkillCategory[] = [
     skills: [
       "Native Android (Java) and iOS",
       "Advanced UI design (responsive/adaptive screens)",
-      "In-app purchases and payment gateway integration with PayU, PayPal, Stripe, Razorpay, Flutterwave, and Paystack",
+      "In-app purchases",
       "Audio/video streaming",
+    ],
+  },
+  {
+    title: "Payment Gateway",
+    skills: ["Payment gateway integration with PayU, PayPal, Stripe, Razorpay, Flutterwave, and Paystack"],
+  },
+  {
+    title: "Video & Voice Call",
+    skills: [
       "Agora and Twilio video calling on Android and iOS",
       "Telnyx and ZegoCloud calling SDKs",
     ],
