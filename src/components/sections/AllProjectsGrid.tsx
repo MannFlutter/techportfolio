@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLinkIcon } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   fadeUp,
@@ -102,7 +102,7 @@ export function AllProjectsGrid() {
                       className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
                     >
                       Play Store
-                      <ExternalLink className="size-3" aria-hidden />
+                      <ExternalLinkIcon className="size-3" />
                     </a>
                   ) : null}
                   {project.ios ? (
@@ -113,7 +113,7 @@ export function AllProjectsGrid() {
                       className="inline-flex items-center gap-1.5 text-xs text-text-secondary transition-colors duration-200 ease-signature hover:text-signal"
                     >
                       App Store
-                      <ExternalLink className="size-3" aria-hidden />
+                      <ExternalLinkIcon className="size-3" />
                     </a>
                   ) : null}
                 </div>

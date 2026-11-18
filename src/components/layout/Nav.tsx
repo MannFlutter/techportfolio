@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
 import { useLenisScroll } from "@/components/layout/SmoothScrollProvider";
+import { MenuIcon, XIcon } from "@/components/ui/icons";
 import { personal } from "@/lib/data/personal";
 import { cn } from "@/lib/utils";
 
@@ -184,7 +184,7 @@ export function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? <XIcon className="size-5" /> : <MenuIcon className="size-5" />}
         </button>
       </nav>
 

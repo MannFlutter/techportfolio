@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPinIcon } from "@/components/ui/icons";
 
 const HIGHLIGHTS = [
   "ROS integration (ROS 2 migration in progress)",
@@ -294,10 +294,7 @@ export function OdigoEtihadRail() {
           <SectionHeading>Live deployments</SectionHeading>
           <div className="mt-5">
             <span className="inline-flex max-w-full items-center gap-2 rounded-md border border-signal/25 bg-signal/[0.06] px-3.5 py-2.5 font-mono text-xs leading-relaxed tracking-wide text-text-primary sm:text-[13px]">
-              <MapPin
-                className="size-3.5 shrink-0 text-signal"
-                aria-hidden
-              />
+              <MapPinIcon className="size-3.5 shrink-0 text-signal" />
               UAE — Etihad Rail, Fujairah Passenger Station
             </span>
           </div>

@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { FileDown, Mail, Phone, Send } from "lucide-react";
+import {
+  FileDownIcon,
+  MailIcon,
+  PhoneIcon,
+  SendIcon,
+} from "@/components/ui/icons";
 import { personal } from "@/lib/data/personal";
 import { RevealText } from "@/components/ui/RevealText";
 import { cn } from "@/lib/utils";
@@ -24,13 +29,13 @@ const channels = [
     href: `mailto:${personal.email}`,
     label: personal.email,
     ariaLabel: "Email",
-    icon: Mail,
+    icon: MailIcon,
   },
   {
     href: `tel:${personal.phone.replace(/\s+/g, "")}`,
     label: personal.phone,
     ariaLabel: "Phone",
-    icon: Phone,
+    icon: PhoneIcon,
   },
   {
     href: personal.linkedinUrl,
@@ -155,7 +160,7 @@ export function Contact() {
                 download
                 className="mt-auto inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-text-primary transition-colors duration-200 ease-signature hover:border-signal/40 hover:text-signal sm:w-auto sm:self-start lg:mt-10"
               >
-                <FileDown className="size-4" aria-hidden />
+                <FileDownIcon className="size-4" />
                 Download Resume
               </a>
             </div>
@@ -233,7 +238,7 @@ export function Contact() {
                 disabled={status === "sending"}
                 className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-signal px-5 text-sm font-medium text-primary-foreground transition-opacity duration-200 ease-signature hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                <Send className="size-4" aria-hidden />
+                <SendIcon className="size-4" />
                 {status === "sending" ? "Sending…" : "Send message"}
               </button>
 
