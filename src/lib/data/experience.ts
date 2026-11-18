@@ -40,6 +40,14 @@ export const experience: ExperienceEntry[] = [
         detail: "Built Android kiosk workflows for patient check-in, guided device checkups, offline synchronization, and reports. Integrated a Three.js doctor avatar through Android WebView with procedural poses and English and Hindi lip sync.",
       },
       {
+        label: "Video calling.",
+        detail: "Integrated Agora and Twilio video calling in Android and iOS applications.",
+      },
+      {
+        label: "Payment gateways.",
+        detail: "Integrated PayU, PayPal, Stripe, Razorpay, Flutterwave, and Paystack.",
+      },
+      {
         label: "Mobile engineering and team leadership.",
         detail: "Designed and shipped 15+ Flutter applications across robotics, enterprise, fintech, education, and communication. Led three engineers through code reviews, sprint planning, mentoring, and production releases.",
       },

@@ -35,7 +35,7 @@ export const personal = {
   aboutHeading: "Software that talks to hardware.",
   about: [
     "I build the software layer where mobile apps meet hardware and real-time systems — ROS-driven robots, connected devices, and low-latency operator interfaces that run in production, not demos.",
-    "I design clean, modular Flutter architectures with offline-first strategies and performance as a first-class concern — profiling, render optimization, and reliability under real-world network conditions. I use AI coding tools and structured prompting to move faster without cutting corners on quality. I also work on 3D avatars and vehicle models, including a real-time 3D doctor integrated into the Sccore Diagnostic Hub patient interface.",
+    "I design clean, modular Flutter architectures with offline-first strategies and performance as a first-class concern — profiling, render optimization, and reliability under real-world network conditions. I use AI coding tools and structured prompting to move faster without cutting corners on quality. I also work on 3D avatars and vehicle models, including a real-time 3D doctor integrated into the healthcare assistant robot’s patient interface.",
     "I enjoy taking ownership beyond writing code—from mentoring engineers and reviewing architecture to ensuring every release is stable, maintainable, and ready for real-world production environments.",
   ],
 } as const;

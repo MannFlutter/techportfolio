@@ -128,7 +128,7 @@ export const projects: Project[] = [
     shortDescription:
       "Android clinic kiosk that runs patient checkups on a diagnostic robot",
     fullDescription:
-      "Sccore Diagnostic Hub is the patient-facing app for the clinic assistant robot. Built for a 27-inch Android kiosk, it walks a patient from check-in through the devices assigned to that robot and ends with a report. The flow covers registration, device selection, guided checkups, and results — including vitals, blood and urine kits, heart and lung checks, vision, dental, skin, infection screening, and mental-health questionnaires. Results stay on device and can be synced, exported as PDF, and shared on WhatsApp; an operator panel controls language, ads, the intro video, and the assistant. A 3D doctor on the device-selection screen greets the patient, listens in English and Hindi, and can suggest a checkup. The same app also plays clinic ads and can place a telemedicine video call.",
+      "The clinic assistant robot uses a patient-facing Android app. Built for a 27-inch Android kiosk, it walks a patient from check-in through the devices assigned to that robot and ends with a report. The flow covers registration, device selection, guided checkups, and results — including vitals, blood and urine kits, heart and lung checks, vision, dental, skin, infection screening, and mental-health questionnaires. Results stay on device and can be synced, exported as PDF, and shared on WhatsApp; an operator panel controls language, ads, the intro video, and the assistant. A 3D doctor on the device-selection screen greets the patient, listens in English and Hindi, and can suggest a checkup. The same app also plays clinic ads and can place a telemedicine video call.",
     category: "Healthcare",
     tech: [
       "Flutter",
@@ -751,8 +751,8 @@ export const projects: Project[] = [
   {
     slug: threeDProjectSlug,
     title: "3D Avatars & Vehicle Models",
-    shortDescription: "Human-character 3D avatars and car models, including the patient-facing 3D doctor for Sccore Diagnostic Hub.",
-    fullDescription: "The 3D doctor replaced the particle orb on Sccore Diagnostic Hub’s device-selection Ask me overlay. The standing character uses the existing GLB model in a Three.js scene inside an Android WebView. Flutter manages the assistant session, and the WebView renders the character’s poses, expressions, and mouth movements.",
+    shortDescription: "Human-character 3D avatars and car models, including the patient-facing 3D doctor for the healthcare assistant robot.",
+    fullDescription: "The 3D doctor replaced the particle orb in the clinic app’s Ask me overlay on the device-selection screen. The standing character uses the existing GLB model in a Three.js scene inside an Android WebView. Flutter manages the assistant session, and the WebView renders the character’s poses, expressions, and mouth movements.",
     category: "3D & Visualization",
     tech: ["Flutter", "Three.js", "Android WebView", "glTF / GLB", "Procedural animation"],
     features: [
